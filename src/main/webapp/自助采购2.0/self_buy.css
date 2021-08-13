@@ -1,0 +1,249 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "微软雅黑";
+}
+
+#m-topnav {
+    width: 100%;
+    background-color: #ffffff;
+    font-size: 12px;
+    color: #999999;
+    height: 30px;
+    line-height: 29px;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 5px solid #e6e6e6;
+    z-index: 999;
+}
+
+.g_row {
+    width: 1250px;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    zoom: 1;
+}
+
+.fl {
+    border: 0px;
+    float: left;
+    width: 625px;
+    position: absolute;
+    top: 0px;
+    left: 90.6px;
+    height: 29px;
+    margin: 0 auto;
+    zoom: 1;
+}
+
+#m_topnav,
+a.font_c1 {
+    color: #ff7300;
+    padding-right: 10px;
+    padding: left 10px;
+}
+
+#m_topnav,
+a.font_c2 {
+    color: #999999;
+    padding-right: 10px;
+    padding: left 10px;
+}
+
+#m_topnav,
+.fl {
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+}
+
+#m-topnav ins,
+a {
+    text-decoration: none;
+}
+
+#m-topnav .clearfix {
+    float: left;
+    border: 0px;
+    width: 440px;
+    position: absolute;
+    top: 2px;
+    left: 949px;
+    height: 30px;
+    margin: 0 auto;
+    zoom: 1;
+}
+
+#m-topnav .clearfix dd {
+    position: relative;
+    height: 29px;
+    line-height: 25px;
+    color: #999999;
+    z-index: 2;
+}
+
+#m-topnav .clearfix dd.tool {
+    width: 50px;
+    float: left;
+}
+
+#m-topnav .clearfix dd.tool.top_my {
+    width: 85px;
+    float: left;
+}
+
+#m-topnav .clearfix dd.tool.top_service {
+    width: 85px;
+}
+
+#m-topnav .clearfix dd.tool.top_iphone {
+    padding-left: 11px;
+    width: 75px;
+}
+
+.p_QR_img,
+.w_QR_img {
+    position: absolute;
+    float: left;
+    top: 0px;
+    left: 0px;
+}
+
+#m-topnav .clearfix dd.tool.top_weixin {
+    padding-left: 11px;
+    width: 74px;
+}
+
+#m-topnav .clearfix dd.tool.top_nav {
+    width: 85px;
+}
+
+#m-topnav .clearfix dd.tool.top_service a.sv {
+    width: 80px;
+    background-position-x: 65px;
+    background-position-y: 12px;
+}
+
+#m-topnav .clearfix dd.tool.top_iphone a.sv {
+    width: 80px;
+    background-position-x: 50px;
+    background-position-y: 2px;
+}
+
+#m-topnav dd.tool.top_weixin a.sv {
+    width: 80px;
+    background-position-x: 50px;
+    background-position-y: 4px;
+}
+
+#m-topnav dd a {
+    color: rgb(134, 132, 132);
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+#m-topnav dd .menu a {
+    color: #999;
+    display: inline-block;
+    text-decoration: none;
+    padding-left: 15px;
+}
+
+#m-topnav dd .menu a:focus,
+#m-topnav dd .menu a:hover {
+    color: rgb(150, 202, 202);
+    text-decoration: underline;
+}
+
+#m-topnav .clearfix dd {
+    background-image: url(images/down.png);
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: 73px 11px;
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+    display: block;
+    z-index: 999;
+}
+
+.clearfix dd .menu {
+    display: none;
+    list-style: none;
+    height: 400px;
+    width: 200px;
+    float: left;
+    position: absolute;
+    top: 28px;
+    border: 1px solid #beb2b2;
+    z-index: 999;
+}
+
+#m-topnav dd.tool.top_my .menu {
+    width: 200px;
+    height: 180px;
+    background-color: #ffffff;
+    z-index: 999;
+}
+
+#m-topnav dd.tool.top_service .menu {
+    width: 80px;
+    height: 60px;
+    background-color: #ffffff;
+    z-index: 999;
+}
+
+#m-topnav dd.tool.top_iphone .menu {
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff;
+    z-index: 2;
+}
+
+#m-topnav dd.tool.top_weixin .menu {
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff;
+    z-index: 2;
+}
+
+#m-topnav dd.tool.top_nav .menu {
+    width: 400px;
+    height: 230px;
+    float: left;
+    position: absolute;
+    top: 28px;
+    left: -312px;
+    background-color: #ffffff;
+    z-index: 2;
+}
+
+#m-topnav dd .menu_list a {
+    display: inline-block;
+    width: 80px;
+}
+
+h5 {
+    font-size: 13px;
+}
+
+ul,
+li,
+ol,
+dl,
+dt,
+dd,
+div,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    padding: 0px;
+    margin: 0px;
+}

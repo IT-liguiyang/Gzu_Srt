@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户专区</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Trade.css">
+</head>
+
+<body>
+    <form id="formcontact" method="post" action="" onsubmit="return GetTinyMCE();">
+        <div class="box790">
+
+            <div class="tit_t">
+                <strong>公司介绍</strong>
+            </div>
+
+            <dl class="list_dd">
+                <dt><span class="red">*</span>公司名称：</dt>
+                <dd>
+
+                    <input name="ComName" id="ComName" type="text" value="" class="txtInt  bg"><span id="ComNameTip" class=""></span>
+                    <p class="font999">
+                        请按营业执照上来填写
+                    </p>
+
+
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>企业类型：</dt>
+                <dd>
+
+                    <select id="CompanyRegisterType" name="CompanyRegisterType">
+                        <option>请选择</option>
+                        <optgroup label="-----------------------------">
+                            <option value="1">个体经营</option>
+                        </optgroup>
+                        <optgroup label="-----------------------------">
+                            <option value="2">私营独资企业</option>
+                        </optgroup>
+                        <optgroup label="-----------------------------">
+                            <option value="3">私营合伙企业</option>
+                            <option value="4">私营有限责任公司</option>
+                            <option value="5">私营股份有限公司</option>
+                            <option value="6">国有企业</option>
+                            <option value="7">集体企业</option>
+                            <option value="8">股份合作企业</option>
+                            <option value="9">联营企业</option>
+                            <option value="10">有限责任公司</option>
+                            <option value="11">有限责任公司（国有独资或控股）</option>
+                            <option value="12">有限责任公司（自然人投资或控股）</option>
+                            <option value="13">一人有限责任公司</option>
+                            <option value="14">其他有限责任公司</option>
+                            <option value="15">股份有限公司</option>
+                            <option value="16">其他内资企业</option>
+                        </optgroup>
+                        <optgroup label="-----------------------------">
+                            <option value="17">三来一补</option>
+                            <option value="18">法人分支机构</option>
+                            <option value="19">农民专业合作经济组织</option>
+                        </optgroup>
+                        <optgroup label="-----------------------------">
+                            <option value="20">合资经营企业（港或澳、台资）</option>
+                            <option value="21">合作经营企业（港或澳、台资）</option>
+                            <option value="22">港、澳、台商独资经营企业</option>
+                            <option value="23">港、澳、台商投资股份有限公司</option>
+                            <option value="24">中外合资经营企业</option>
+                            <option value="25">中外合作经营企业</option>
+                            <option value="26">外资企业</option>
+                            <option value="27">外商投资股份有限公司</option>
+                        </optgroup>
+                        <optgroup label="-----------------------------">
+                            <option value="28">其他</option>
+                        </optgroup>
+                    </select>
+                    <span id="CompanyRegisterTypeTip" class=""></span>
+
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>业务类型：</dt>
+                <dd>
+                    <select name="CompanyType" id="CompanyType">
+                        <option value="-1">请选择</option>
+                        
+                        <option value="1">
+                            建材企业</option>
+                        
+                        <option value="2">
+                            建筑企业</option>
+                        
+                        <option value="4">
+                            装饰企业</option>
+                        
+                        <option value="8">
+                            房产企业</option>
+                        
+                        <option value="16">
+                            经销商</option>
+                        
+                        <option value="32">
+                            设计院</option>
+                        
+                        <option value="64">
+                            设计师</option>
+                        
+                        <option value="4096">
+                            化工企业</option>
+                        
+                        <option value="1024">
+                            其他</option>
+                        
+                    </select>
+                    <span id="CompanyTypeTip" class=""></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>经营模式：</dt>
+                <dd>
+                    <select name="BusinessModel" id="BusinessModel">
+                        <option value="-1">请选择</option>
+                        
+                        <option value="1">
+                            生产加工</option>
+                        
+                        <option value="2">
+                            经销批发</option>
+                        
+                        <option value="4">
+                            招商代理</option>
+                        
+                        <option value="8">
+                            商业服务</option>
+                        
+                        <option value="128">
+                            其他</option>
+                        
+                    </select><span id="BusinessModelTip" class=""></span>
+                </dd>
+            </dl>
+            <dl class="list_dd" style="position:static">
+                <dt><span class="red">*</span>主营行业：</dt>
+                <dd>
+                    <p>
+                        <input name="MajorBusiness" style="width: 400px" value="" type="text" class="txtInt width400 bg">
+                    </p>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>主营产品：</dt>
+                <dd>
+                    <dl class="list_dd">
+                        <dt style="width: 72px">销售的产品：</dt>
+                        <dd class="MainProducts">
+                            <p>
+
+                                <input name="MainProducts" style="width: 400px" value="" type="text" class="txtInt width400 bg">
+                            </p>
+                            <p class="font999">
+                                （多个产品名称，请用“逗号”隔开，限填8个产品关键词，如：建材瓶，陶瓷。）
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl class="list_dd MajorProcurement">
+                        <dt style="width: 72px">采购的产品：</dt>
+                        <dd>
+                            <p>
+                                <input name="MajorProcurement" style="width: 400px" value="" type="text" class="txtInt width400 bg">
+                            </p>
+                            <p>
+                            </p>
+                            <p class="font999">
+                                （多个产品名称，请用“逗号”隔开，限填8个产品关键词，如：建材瓶，陶瓷。）
+                            </p>
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>公司简介：</dt>
+                <dd>
+                    <textarea style="width: 700px;height: 450px;" id="Description" name="Description" class="textIpt" aria-hidden="true" style="display: none;"></textarea><span role="application" aria-labelledby="Description_voice" id="Description_parent"
+                        class="mceEditor defaultSkin"><span class="mceVoiceLabel" style="display:none;" id="Description_voice">{#aria.rich_text_area}</span>
+                </dd>
+            </dl>
+
+            <dl class="list_dd">
+                <dt>&nbsp;</dt>
+                <dd>
+                    <!-- <p style="color: red;">温馨提示：为了提高信息的质量，更好的提高百度排名，请不要在详细说明里和图片中加上联系方式。</p> -->
+                    <p class="font999">
+                        请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势；<br> 如果内容过于简单或仅填写单纯的产品介绍，将有可能无法通过审核，建议50-1800个字
+                    </p>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>公司地址：</dt>
+                <dd>
+
+                    <span id="MainContent_AccountMainContent_area">
+<select name="area1" class="m-sel">
+    <option value="0">-选择省份-</option>
+<option value="26">四川省</option><option value="58">河北</option><option value="203">山西</option><option value="309">河南</option><option value="438">辽宁</option><option value="498">吉林</option><option value="546">黑龙江</option><option value="626">内蒙古</option><option value="714">江苏</option><option value="789">山东</option><option value="899">安徽</option><option value="977">浙江</option><option value="1056">福建</option><option value="1124">湖北</option><option value="1206">湖南</option><option value="1307">广东</option><option value="1405">广西</option><option value="1493">江西</option><option value="1585">四川</option><option value="1715">海南</option><option value="1735">贵州</option><option value="1816">云南</option><option value="1942">西藏</option><option value="1966">陕西</option><option value="2063">甘肃</option><option value="2145">青海</option><option value="2187">宁夏</option><option value="2207">新疆</option><option value="2292">台湾</option><option value="8547">香港</option><option value="8551">澳门</option></select>
+
+<select name="area2" class="m-sel">
+    <option value="0">-选择市-</option>
+    <option value="1">重庆市</option><option value="10">贵阳市</option><option value="20">成都</option><option value="26">重庆</option><option value="58">河北</option><option value="203">山西</option><option value="309">河南</option><option value="438">辽宁</option><option value="498">吉林</option></select>
+</select>
+
+<select name="area3" class="m-sel">
+    <option value="0">-选择县/区-</option>
+    <option value="1">万州</option><option value="1">九龙坡</option><option value="10">云岩区</option><option value="1">观山湖区</option><option value="20">金牛区</option><option value="26">锦江区</option>
+</select>
+
+</span>
+                    <script src="https://www.bmlink.com/scripts/areajson.js" type="text/javascript"></script>
+                    <script language="javascript">
+                        $(function() {
+                            //  [{Id:1,Name:'北京',},{Id:2,}
+
+                            var cid = 'MainContent_AccountMainContent_area';
+
+                            function getarea(pid, index, callback) {
+                                var select = $('#' + cid + ' select:eq(' + index + ')');
+                                //select.find('option:gt(0)').remove();
+                                $('#' + cid + ' select:gt(' + index + ')').each(function() {
+                                    $(this).find('option:gt(0)').remove();
+                                });
+
+                                //$.getJSON('/Ashx/AjaxUrl.ashx?method=getArea', { pid: pid }, function (json) {
+                                var json = findjson(pid, index);
+                                $.each(json, function(i, area) {
+
+                                    select.append('<option value="' + area.Id + '">' + area.Name + '</option>');
+                                });
+                                if (callback) {
+                                    callback();
+                                }
+                                // });
+                            }
+
+                            function findjson(pid, index) {
+
+                                if (index == 0) //1rank
+                                {
+                                    var select = "";
+                                    $.each(areastring, function(i, area) {
+                                        select += "{'Id':" + area.Id + ",'Name':'" + area.Name + "'},";
+                                    });
+                                    return eval("[" + RTrim(select) + "]");
+                                } else if (index == 1) //2rank
+                                {
+                                    var select = "";
+                                    $.each(areastring, function(i, area) {
+                                        if (pid == area.Id) {
+                                            select = "";
+                                            $.each(area.List, function(i2, area2) {
+                                                select += "{'Id':" + area2.Id + ",'Name':'" + area2.Name + "'},";
+
+                                            });
+                                        }
+                                    });
+                                    return eval("[" + RTrim(select) + "]");
+                                } else if (index == 2) //3rank
+                                {
+                                    var select = "";
+                                    $.each(areastring, function(i, area) {
+                                        $.each(area.List, function(i2, area2) {
+
+                                            if (pid == area2.Id) {
+                                                select = "";
+                                                $.each(area2.List, function(i3, area3) {
+                                                    select += "{'Id':" + area3.Id + ",'Name':'" + area3.Name + "'},";
+
+                                                });
+                                            }
+
+                                        });
+                                    });
+                                    return eval("[" + RTrim(select) + "]");
+                                }
+                            }
+
+                            function RTrim(str) {
+                                var i;
+                                for (i = str.length - 1; i >= 0; i--) {
+                                    if (str.charAt(i) != "," && str.charAt(i) != ",") break;
+                                }
+                                str = str.substring(0, i + 1);
+                                return str;
+                            }
+
+
+                            var ProvinceId = '0';
+                            var CityId = '0';
+                            var CountyId = '0';
+                            setTimeout(function() {
+                                getarea(0, 0, function() {
+                                    if (ProvinceId > 0) {
+
+                                        // $('#' + cid + ' select:eq(0) option[value="'+ProvinceId+'"]').attr('selected','selected');
+                                        try {
+                                            $('#' + cid + ' select:eq(0)').val(ProvinceId);
+                                        } catch (ex) {}
+
+
+                                        getarea(ProvinceId, 1, function() {
+                                            if (CityId > 0) {
+                                                try {
+                                                    $('#' + cid + ' select:eq(1)').val(CityId);
+                                                } catch (ex) {}
+
+                                                getarea(CityId, 2, function() {
+                                                    if (CountyId > 0) {
+                                                        try {
+                                                            $('#' + cid + ' select:eq(2)').val(CountyId);
+                                                        } catch (ex) {}
+                                                    }
+                                                });
+
+                                            }
+                                        });
+
+                                    }
+                                });
+                            }, 10);
+
+                            $('#' + cid + ' select:eq(0)').change(function() {
+                                $('#' + cid + ' select:eq(1)').find('option:gt(0)').remove();
+                                $('#' + cid + ' select:eq(2)').find('option:gt(0)').remove();
+                                getarea($(this).val(), 1);
+                            });
+
+                            $('#' + cid + ' select:eq(1)').change(function() {
+                                $('#' + cid + ' select:eq(2)').find('option:gt(0)').remove();
+                                getarea($(this).val(), 2);
+                            });
+
+                        });
+                    </script>
+
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>公司标志：</dt>
+                <dd>
+                    <div class="img150x150">
+                        <img id="showpictureimgupload" src="https://meta.bmlink.com/2011/member/images/pic/pic_150x150.jpg" width="150" height="150" alt="">
+                    </div>
+                    <div class="pa10">
+
+
+
+                        <input type="hidden" value="" name="imgupload" id="imgupload">
+                        <span style="display: block; float: left;">
+<a name="imgupload_file" id="imgupload_file" class="btn_fx" href="javascript:;">上传</a>
+</span>
+                        <input type="hidden" id="imgupload_categoryid" value="1">
+                        <script type="text/javascript" language="javascript">
+                            $(function() {
+                                $('#imgupload_file').click(function() {
+                                    selectPicture({
+                                        maxlength: 1,
+                                        watermark: true,
+                                        defaultcate: true,
+                                        callback: function(data) {
+                                            if (data.length < 1) {
+                                                alert("您尚未选择任何图片！");
+                                                return false;
+                                            }
+                                            var smallpath = 'http://img1.bmlink.com/small/';
+                                            //$('#showpictureimgupload').attr('src', smallpath + data[i].path);
+                                            $('#showpictureimgupload').attr('src', data[0].path);
+                                            $('#showpictureimgupload').attr("alt", "0");
+                                            //$('#showpictureimgupload').attr("orisrc", data[i].path);
+                                            $('#showpictureimgupload').attr("orisrc", data[0].serverpath);
+                                            $('#imgupload').val(data[0].serverpath);
+                                        }
+                                    });
+                                });
+                            });
+                            //js字符串转
+                            function parseObj(strData) {
+                                return (new Function("return" + strData))();
+                            }
+                        </script>
+
+
+                        <font color="#999999">&nbsp;公司标志图片最佳宽高：150*150 图片格式为jpg、jpeg、gif、png</font>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>形象图片：</dt>
+                <dd>
+                    <div class="imgUp">
+                        <ul class="imgStar">
+
+                            <li>
+                                <span class="imgBox80">
+                                    <img src="https://meta.bmlink.com/2011/member/images/pic/nopic01.gif" alt="">
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="imgBox80">
+                                    <img src="https://meta.bmlink.com/2011/member/images/pic/nopic02.gif" alt="">
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="imgBox80">
+                                    <img src="https://meta.bmlink.com/2011/member/images/pic/nopic03.gif" alt="">
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="imgBox80">
+                                    <img src="https://meta.bmlink.com/2011/member/images/pic/nopic04.gif" alt="">
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="pa10">
+                        <a class="btn_fx btn_changepic" href="javascript:void(0);">上传图片</a>
+                        <font color="#999999">&nbsp;公司形象图片最佳宽高：250*250 图片格式为jpg、jpeg、gif、png</font>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>微信二维码：</dt>
+                <dd>
+                    <div>
+                        <img id="showpictureimgupload3" src="https://meta.bmlink.com/2011/member/images/pic/pic_200x150.jpg" width="91" height="91" alt="">
+                    </div>
+                    <div class="pa10">
+
+
+
+                        <input type="hidden" value="" name="imgupload3" id="imgupload3">
+                        <span style="display: block; float: left;">
+<a name="imgupload3_file" id="imgupload3_file" class="btn_fx" href="javascript:;">上传</a>
+</span>
+                        <input type="hidden" id="imgupload3_categoryid" value="1">
+                        <script type="text/javascript" language="javascript">
+                            $(function() {
+                                $('#imgupload3_file').click(function() {
+                                    selectPicture({
+                                        maxlength: 1,
+                                        watermark: true,
+                                        defaultcate: true,
+                                        callback: function(data) {
+                                            if (data.length < 1) {
+                                                alert("您尚未选择任何图片！");
+                                                return false;
+                                            }
+                                            var smallpath = 'http://img1.bmlink.com/small/';
+                                            //$('#showpictureimgupload3').attr('src', smallpath + data[i].path);
+                                            $('#showpictureimgupload3').attr('src', data[0].path);
+                                            $('#showpictureimgupload3').attr("alt", "0");
+                                            //$('#showpictureimgupload3').attr("orisrc", data[i].path);
+                                            $('#showpictureimgupload3').attr("orisrc", data[0].serverpath);
+                                            $('#imgupload3').val(data[0].serverpath);
+                                        }
+                                    });
+                                });
+                            });
+                            //js字符串转
+                            function parseObj(strData) {
+                                return (new Function("return" + strData))();
+                            }
+                        </script>
+
+
+                        <font color="#999999">&nbsp;微信二维码最佳宽高：91*91 图片格式为jpg、jpeg、gif、png</font>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>公司网址：</dt>
+                <dd>
+                    <input name="Href" id="Href" type="text" value="http://" class="txtInt  bg w260"><br>
+                    <img src="https://meta.bmlink.com/2011/member/images/pic/2013code.jpg" onerror="javascript:this.src='https://meta.bmlink.com/2011/member/images/pic/2013code.jpg';" alt="公司网址二维码，可在商铺显示。">
+                    <font color="red">提示：修改公司网址保存自动更新二维码图片！</font>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>员工人数：</dt>
+                <dd>
+                    <select id="EmployeeCount" name="EmployeeCount">
+                        <option value="0">-- 请选择 --</option>
+                        <option value="5人以下">5人以下</option>
+                        <option value="5 - 10人">5 - 10人</option>
+                        <option value="10 - 50人">10 - 50人</option>
+                        <option value="50 - 100人">50 - 100人</option>
+                        <option value="100 - 200人">100 - 200人</option>
+                        <option value="200 - 500人">200 - 500人</option>
+                        <option value="500 - 1000人">500 - 1000人</option>
+                        <option value="1000人以上">1000人以上</option>
+                    </select>
+                    <span id="cerNameTip"></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>厂房面积：</dt>
+                <dd>
+                    <input name="PlantArea" id="PlantArea" value="" type="text" class="txtInt  bg w260">平方米 <span id="PlantAreaTip" class=""></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>年营业额：</dt>
+                <dd>
+                    <select id="coturnover" name="coturnover">
+                        <option value="0">-- 请选择 --</option>
+                        <option value="人民币10万元/年以下">人民币10万元/年以下</option>
+                        <option value="人民币10万元/年 - 人民币30万元/年">人民币10万元/年 - 人民币30万元/年</option>
+                        <option value="人民币30万元/年 - 人民币50万元/年">人民币30万元/年 - 人民币50万元/年</option>
+                        <option value="人民币50万元/年 - 人民币100万元/年">人民币50万元/年 - 人民币100万元/年</option>
+                        <option value="人民币100万元/年 - 人民币200万元/年">人民币100万元/年 - 人民币200万元/年</option>
+                        <option value="人民币200万元/年 - 人民币500万元/年">人民币200万元/年 - 人民币500万元/年</option>
+                        <option value="人民币500万元/年 - 人民币1000万元/年">人民币500万元/年 - 人民币1000万元/年</option>
+                        <option value="人民币1000万元/年 - 人民币2000万元/年">人民币1000万元/年 - 人民币2000万元/年</option>
+                        <option value="人民币2000万元/年 - 人民币5000万元/年">人民币2000万元/年 - 人民币5000万元/年</option>
+                        <option value="人民币5000万元/年 - 人民币1亿元/年">人民币5000万元/年 - 人民币1亿元/年</option>
+                        <option value="人民币1亿元/年以上">人民币1亿元/年以上</option>
+                    </select>
+                    <span id="coturnoverTip"></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>年进口额：</dt>
+                <dd>
+                    <select id="coinprotsin" name="coinprotsin">
+                        <option value="0">-- 请选择 --</option>
+                        <option value="人民币10万元/年以下">人民币10万元/年以下</option>
+                        <option value="人民币10万元/年 - 人民币30万元/年">人民币10万元/年 - 人民币30万元/年</option>
+                        <option value="人民币30万元/年 - 人民币50万元/年">人民币30万元/年 - 人民币50万元/年</option>
+                        <option value="人民币50万元/年 - 人民币100万元/年">人民币50万元/年 - 人民币100万元/年</option>
+                        <option value="人民币100万元/年 - 人民币200万元/年">人民币100万元/年 - 人民币200万元/年</option>
+                        <option value="人民币200万元/年 - 人民币500万元/年">人民币200万元/年 - 人民币500万元/年</option>
+                        <option value="人民币500万元/年 - 人民币1000万元/年">人民币500万元/年 - 人民币1000万元/年</option>
+                        <option value="人民币1000万元/年 - 人民币2000万元/年">人民币1000万元/年 - 人民币2000万元/年</option>
+                        <option value="人民币2000万元/年 - 人民币5000万元/年">人民币2000万元/年 - 人民币5000万元/年</option>
+                        <option value="人民币5000万元/年 - 人民币1亿元/年">人民币5000万元/年 - 人民币1亿元/年</option>
+                        <option value="人民币1亿元/年以上">人民币1亿元/年以上</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>年出口额：</dt>
+                <dd>
+                    <select id="coinprotsout" name="coinprotsout">
+                        <option value="0">-- 请选择 --</option>
+                        <option value="人民币10万元/年以下">人民币10万元/年以下</option>
+                        <option value="人民币10万元/年 - 人民币30万元/年">人民币10万元/年 - 人民币30万元/年</option>
+                        <option value="人民币30万元/年 - 人民币50万元/年">人民币30万元/年 - 人民币50万元/年</option>
+                        <option value="人民币50万元/年 - 人民币100万元/年">人民币50万元/年 - 人民币100万元/年</option>
+                        <option value="人民币100万元/年 - 人民币200万元/年">人民币100万元/年 - 人民币200万元/年</option>
+                        <option value="人民币200万元/年 - 人民币500万元/年">人民币200万元/年 - 人民币500万元/年</option>
+                        <option value="人民币500万元/年 - 人民币1000万元/年">人民币500万元/年 - 人民币1000万元/年</option>
+                        <option value="人民币1000万元/年 - 人民币2000万元/年">人民币1000万元/年 - 人民币2000万元/年</option>
+                        <option value="人民币2000万元/年 - 人民币5000万元/年">人民币2000万元/年 - 人民币5000万元/年</option>
+                        <option value="人民币5000万元/年 - 人民币1亿元/年">人民币5000万元/年 - 人民币1亿元/年</option>
+                        <option value="人民币1亿元/年以上">人民币1亿元/年以上</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>主要销售区域：</dt>
+                <dd>
+                    <input name="MajorMarkets" id="MajorMarkets" value="" type="text" class="txtInt w260 bg">
+                    <span id="MajorMarketsTip"></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>主要客户群体：</dt>
+                <dd>
+                    <input name="MajorCustomers" id="MajorCustomers" value="" type="text" class="txtInt w260 bg">
+                    <span id="MajorCustomersTip"></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>请拖动验证码:</dt>
+                <dd>
+                    <div id="captcha_div">
+                        <div class="yidun yidun--light yidun--embed yidun--jigsaw" style="width: 320px; min-width: 220px">
+                            <div class="yidun_panel" style="padding-bottom: 15px">
+                                <div class="yidun_panel-placeholder">
+                                    <div class="yidun_bgimg" style="border-radius: 2px"> <img class="yidun_bg-img" style="border-radius: 2px" src="http://necaptcha.nosdn.127.net/8e48d088ce554f07ae4f3895afa14f18.jpg"> <img class="yidun_jigsaw" src="http://necaptcha.nosdn.127.net/ee3933dada9a4319a50f327c7086432c.png">
+                                        <div class="yidun_inference yidun_inference--0" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--1" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--2" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--3" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--4" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--5" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--6" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--7" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                    </div>
+                                    <div class="yidun_loadbox" style="border-radius: 2px">
+                                        <div class="yidun_loadbox__inner">
+                                            <div class="yidun_loadicon"></div> <span class="yidun_loadtext">加载中...</span> </div>
+                                    </div>
+                                    <div class="yidun_top">
+                                        <a class="yidun_feedback" href="http://support.dun.163.com/feedback/captcha?captchaId=e118dcf544934080be2a70a796bd0822&amp;token=17735810402c4d64a8aab4b213c0ca88" target="_blank"></a>
+                                        <div class="yidun_refresh"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="yidun_control" style="height: 40px; border-radius: 2px">
+                                <div class="yidun_slide_indicator" style="height: 40px; border-radius: 2px"></div>
+                                <div class="yidun_slider" style="width: 40px; border-radius: 2px">
+                                    <!-- 分支二兼容旧接口 --><span class="yidun_slider__icon"></span> </div>
+                                <div class="yidun_tips" style="line-height: 40px"> <span class="yidun_tips__icon"></span> <span class="yidun_tips__text yidun-fallback__tip">向右拖动滑块填充拼图</span>
+                                    <div class="yidun_tips__answer hide"> <span class="yidun_tips__point"></span> <img class="yidun_tips__img"> </div>
+                                </div>
+                            </div>
+                        </div> <input type="hidden" name="NECaptchaValidate" value="" class="yidun_input"></div>
+                </dd>
+                <dd class="tip_yzm">
+                </dd>
+            </dl>
+            <script src="https://cstaticdun.126.net/load.min.js"></script>
+            <!-- 初始化JS -->
+            <script>
+                var NECaptcha;
+                initNECaptcha({
+                    captchaId: 'e118dcf544934080be2a70a796bd0822',
+                    element: '#captcha_div',
+                    mode: 'embed',
+                    width: 320,
+                    onVerify: function(err, data) {
+                        $('.tip_yzm').empty();
+                        if (err == null) {
+                            $('.tip_yzm').append('<span class=\"onCorrect\">验证通过</span>');
+                        } else {
+                            $('.tip_yzm').append('<span class=\"onCorrect\">请重新验证</span>');
+                        }
+                    }
+                }, function onload(instance) {
+                    NECaptcha = instance;
+                }, function onerror(err) {
+
+                });
+            </script>
+            <dl class="list_dd">
+                <dt>&nbsp;</dt>
+                <dd>
+                    <input type="submit" class="btn_next bg" value="保存并发布">
+                </dd>
+            </dl>
+        </div>
+    </form>
+</body>
+
+</html>

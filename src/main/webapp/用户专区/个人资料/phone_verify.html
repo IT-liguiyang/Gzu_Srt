@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户专区</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Trade.css">
+</head>
+
+<body>
+    <form id="form1" action="" method="post">
+        <div class="box790">
+
+            <div class="tit_t">
+                <strong>手机验证（免费）</strong>
+            </div>
+            <div class="tipBox2">
+                <div class="iconArrDownBox">
+                    <p class="font666">
+                        目前手机验证支持中国大陆地区13*、14*、15*、17*、18*号段；不支持小灵通号码。每日限发送5条验证短信。
+                    </p>
+                    <p class="font666">
+                        通过手机验证，可以证明您手机的真实性，更好的促进交易，还可享受手机登录中国建材网、手机找回密码等服务。
+                    </p>
+                </div>
+                <div class="iconArrDown bg">
+                </div>
+            </div>
+            <div class="Proposal">
+                <!-- 更换手机号码前需先完成安全验证 -->
+            </div>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>手机号码:</dt>
+                <dd>
+                    <input id="Mobile" name="Mobile" type="text" class="txtInt w100 bg"><span id="MobileTip" class=""></span>
+
+
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>请拖动验证码:</dt>
+                <dd>
+                    <div id="captcha_div">
+                        <div class="yidun yidun--light yidun--embed yidun--jigsaw" style="width: 320px; min-width: 220px">
+                            <div class="yidun_panel" style="padding-bottom: 15px">
+                                <div class="yidun_panel-placeholder">
+                                    <div class="yidun_bgimg" style="border-radius: 2px"> <img class="yidun_bg-img" style="border-radius: 2px" src="http://necaptcha.nosdn.127.net/75106f0b6778473fa28e8e31a4eec36b.jpg">
+                                        <img class="yidun_jigsaw" src="http://necaptcha.nosdn.127.net/b551439a8eaf440a8fbe409750fd1bb6.png">
+                                        <div class="yidun_inference yidun_inference--0" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--1" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--2" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--3" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--4" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--5" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--6" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                        <div class="yidun_inference yidun_inference--7" draggable="true"> <img class="yidun_inference__img" draggable="false"> <span class="yidun_inference__border"></span> </div>
+                                    </div>
+                                    <div class="yidun_loadbox" style="border-radius: 2px">
+                                        <div class="yidun_loadbox__inner">
+                                            <div class="yidun_loadicon"></div> <span class="yidun_loadtext">加载中...</span>
+                                        </div>
+                                    </div>
+                                    <div class="yidun_top">
+                                        <a class="yidun_feedback" href="http://support.dun.163.com/feedback/captcha?captchaId=e118dcf544934080be2a70a796bd0822&amp;token=8ffeff4088714537b24c4b0cf38eaf7f" target="_blank"></a>
+                                        <div class="yidun_refresh"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="yidun_control" style="height: 40px; border-radius: 2px">
+                                <div class="yidun_slide_indicator" style="height: 40px; border-radius: 2px"></div>
+                                <div class="yidun_slider" style="width: 40px; border-radius: 2px">
+                                    <!-- 分支二兼容旧接口 --><span class="yidun_slider__icon"></span> </div>
+                                <div class="yidun_tips" style="line-height: 40px"> <span class="yidun_tips__icon"></span> <span class="yidun_tips__text yidun-fallback__tip">向右拖动滑块填充拼图</span>
+                                    <div class="yidun_tips__answer hide"> <span class="yidun_tips__point"></span> <img class="yidun_tips__img"> </div>
+                                </div>
+                            </div>
+                        </div> <input type="hidden" name="NECaptchaValidate" value="" class="yidun_input">
+                    </div>
+                </dd>
+            </dl>
+            <script src="https://cstaticdun.126.net/load.min.js"></script>
+            <!-- 初始化JS -->
+            <script>
+                initNECaptcha({
+                    captchaId: 'e118dcf544934080be2a70a796bd0822',
+                    element: '#captcha_div',
+                    mode: 'embed',
+                    width: 320,
+                    onVerify: function(err, data) {
+                        if (err == null) {
+                            $.post("ajax.ashx?isupdate=1", {
+                                    act: "getvmobile",
+                                    Mobile: $("#Mobile").val(),
+                                    NECaptchaValidate: data.validate
+                                },
+                                function(data) {
+                                    if (!data.error) {
+                                        timecount = 60;
+                                        myInterval = setInterval(showtime, 1000);
+                                    } else {
+                                        $.prompt(data.msg);
+                                        $("#getCode").val('获取手机验证码').removeAttr('disabled');
+                                    }
+                                },
+                                "json"
+                            );
+                        }
+                    }
+                }, function onload(instance) {
+
+                }, function onerror(err) {
+
+                });
+            </script>
+
+            <dl class="list_dd">
+                <dt><span class="red">*</span>手机验证码:</dt>
+                <dd>
+                    <input name="Code" id="Code" type="text" class="txtInt w100 bg"><span id="CodeTip" class=""></span>
+                </dd>
+            </dl>
+
+            <dl class="list_dd">
+                <dt>&nbsp;</dt>
+                <dd>
+                    <input id="btnOK" type="submit" value="确定解绑" class="btn_ok bg"></dd>
+            </dl>
+        </div>
+    </form>
+</body>
+
+</html>

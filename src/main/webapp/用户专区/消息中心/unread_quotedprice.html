@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未读的报价</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Trade.css">
+</head>
+
+<body>
+    <div class="box790">
+        <div class="tit_t">
+            <strong>未读的报价</strong></div>
+        <div class="pa10">
+            <input name="keyword" type="text" class="txtInt" value=""> 报价日期
+            <input name="begindate" type="text" id="datepicker" class="txtInt w100 bg" value="">至
+            <input name="enddate" type="text" id="datepicker2" class="txtInt w100 bg" value="">
+            <input type="button" id="search" value="查询" class="btnSE"></div>
+        <div class="pa10">
+            <input name="" type="checkbox" value="" bindto="idCheck"> 全选 将选中信息 <a href="javascript:;" class="btn_fx"><strong>删除</strong></a></div>
+        <!--表格部分-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+            <tbody>
+                <tr class="ht hd">
+                    <td width="30" text-align="center">
+                        &nbsp;
+                    </td>
+                    <td width="200" text-align="left">
+                        报价信息
+                    </td>
+                    <td width="260" text-align="left">
+                        供应商信息
+                    </td>
+                    <td width="80" text-align="left">
+                        报价日期
+                    </td>
+                    <td width="220" text-align="left">
+                        备注
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="pa10">
+            <input name="" type="checkbox" value="" bindto="idCheck"> 全选 将选中信息 <a href="javascript:;" class="btn_fx"><strong>删除</strong></a></div>
+        <div class="page">
+            <span class="noDataMessage">对不起没有相关信息</span>
+        </div>
+    </div>
+</body>
+
+</html>

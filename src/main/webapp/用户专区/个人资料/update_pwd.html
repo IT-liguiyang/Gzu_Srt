@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户专区</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Trade.css">
+</head>
+
+<body>
+    <div class="box790">
+        <div class="tit_t">
+            <strong>修改密码</strong>
+        </div>
+        <div class="blank10"></div>
+
+        <div class="tipBox2">
+            <div class="iconArrDownBox">
+                <p class="font666">您的姓名是：</p>
+                <p class="font666">您的会员登录名是： &nbsp;验证手机和邮箱，即可使用手机和邮箱登录</p>
+            </div>
+            <div class="iconArrDown bg"></div>
+        </div>
+        <form id="formcontact" method="post" action="">
+            <!-- <input type="hidden" name="act" value="pwd"> -->
+            <dl class="list_dd">
+                <dt><span class="red">*</span>当前密码：</dt>
+                <dd>
+                    <input id="oldpwd" name="oldpwd" type="password" class="txtInt  bg">
+                    <span id="oldpwdTip" class=""></span>
+                </dd>
+            </dl>
+
+            <dl class="list_dd">
+                <dt><span class="red">*</span>新的密码：</dt>
+                <dd>
+                    <input id="newpwd" name="newpwd" type="password" class="txtInt  bg">
+                    <span id="newpwdTip" class=""></span>
+                </dd>
+            </dl>
+
+            <dl class="list_dd">
+                <dt><span class="red">*</span>确认新密码:</dt>
+                <dd>
+                    <input id="newcpwd" name="newcpwd" type="password" class="txtInt  bg">
+                    <span id="newcpwdTip" class=""></span>
+                </dd>
+            </dl>
+            <dl class="list_dd"><dt>&nbsp;</dt>
+                <dd>
+                    <a href="javascript:void();" class="btn_ok bg"><input name="" type="submit" value="确定" class="btn_ok bg">
+                    </a>
+                </dd>
+            </dl>
+        </form>
+    </div>
+</body>
+
+</html>

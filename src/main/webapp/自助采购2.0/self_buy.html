@@ -1,0 +1,1199 @@
+<html>
+
+<head>
+    <title>自助采购</title>
+    <meta name="description" content="建材自助选装平台">
+    <meta name="keywords" content="自助采购">
+    <meta content="always" name="referrer">
+    <link href="css/mydiy.css" rel="stylesheet" type="text/css" charset="gbk">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="self_buy.css">
+    <!--		<link rel="stylesheet" href="css/layui.css" />-->
+    <script src="jquery.min.js"></script>
+    <script src="self_buy.js"></script>
+    <script src="jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../jquery-1.7.2.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+    <!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+    <link type="text/css" rel="stylesheet" href="css/popup.css">
+    <!--		<script charset="GBK" src="js/pconline.login.1.2.min.js"></script>-->
+    <!-- <script src="//jwz.3conline.com/show?id=pconline.other.test15.&amp;media=js&amp;channel=dynamic&amp;"></script>
+<script src="https://mgcdn2.pconline.com.cn/test.kilo.test15./"></script> -->
+    <script>
+        // <li pid="2" pur2="" picur2="" class="pic-txt clearfix">
+        //     <a target="_blank" href="" class="img" rel="" data-rel=""></a>
+        //     <dl class="mid">
+        //     <dt><a target="_blank" href="" class="title">Intel酷睿i7 9400F</a></dt>
+        // <dd class="h46">
+        //     <i id="hexin"><em>核心类型:</em>Ice Lake(第10代) </i>
+        // <i id="type"><em>接口类型:</em>LGA 1000 </i>
+        // <i><em> 二级缓存:</em>1.5M</i>
+        // <i><em>三级缓存:</em>9M </i>
+        // <i><em> 工作功率:</em>8 </i>
+        // </dd>
+        // <dd><a target="_blank" href="" class="mcs">更多参数&gt;&gt;</a>
+        //     </dd>
+        //     <div class="rig"><i class="price" id="price">1200</i><a target="_self" class="choice" id="xuanyong" onclick="xuanyong(this)" name="1">选用</a>
+        // </div>
+        // </dl>
+        // </li>
+        function tijiao() {
+                alert('提交');
+                var type = $(".selected").html();
+
+                $.post("http://localhost:8080/Srt_war/Pro/paramFind", $.param({type: type,start:1}) + '&' + $("#shaixuan").serialize(), function(info) {
+                    var lis;
+                    alert("返回");
+                    if (info.data[0].length > 0) {
+                        for (var i = 0; i < info.data[0].length; i++) {
+                            var li = '<li pid="2" pur2="" picur2="" class="pic-txt clearfix">\n' +
+                                '                                        <a target="_blank" href="" class="img" rel="" data-rel=""></a>\n' +
+                                '                                        <dl class="mid">\n' +
+                                '                                            <dt><a target="_blank" href="" class="title">' + info.data[0][i].pro_NAME + '</a></dt>\n' +
+                                '                                            <dd class="h46">\n' +
+                                '                                            <input type="hidden" value="'+info.data[0][i].id+'">\n' +
+                                '                                                <i id="hexin"><em>品牌:</em>' + info.data[0][i].pro_BRAND + '</i>\n' +
+                                '                                                <i id="type"><em>销量:</em>' + info.data[0][i].pro_SALES_VOLUME + '</i>\n' +
+                                '                                                <i><em> 安全等级:</em>' + info.data[0][i].pro_SAFELEVEL + '</i>\n' +
+                                '                                                <i><em>评分:</em>' + info.data[0][i].pro_AVG_SCORE + '</i>\n' +
+                                '                                                <i><em> 工作功率:</em>8 </i>\n' +
+                                '                                            </dd>\n' +
+                                '                                            <dd><a target="_blank" href="" class="mcs">更多参数&gt;&gt;</a>\n' +
+                                '                                            </dd>\n' +
+                                '                                            <div class="rig"><i class="price" id="price">' + info.data[0][i].pro_PRICE + '</i><a target="_self" class="choice" id="xuanyong" onclick="xuanyong(this)" name="' + i + '">选用</a>\n' +
+                                '                                            </div>\n' +
+                                '                                        </dl>\n' +
+                                '                                    </li>\n';
+                            lis += li;
+                        }
+                        lis = lis + '<li class="last">\n' +
+                            '                                        <div class="pages pconline_page">\n' +
+                            '                                            <input type="text" value="1" style="width: 30px" id="page">\n' +
+                            '                                            <button title="提交" value="提交" onclick="tijiaoPage()">提交</button>\n' +
+                            '                                            <span>共有'+info.data[1]+'</span>\n' +
+                            '                                            <span>现在第1页</span>\n' +
+                            '                                        </div>\n' +
+                            '                                    </li>';
+
+                        $("#showlist").html(lis);
+                            $("#showlist").html($("#showlist").html().split("undefined").join(""));
+                    } else {
+                        alert("wu");
+                        $("#showlist").html("暂无");
+                    }
+
+                });
+
+        }
+        function tijiaoPage() {
+            alert('提交');
+            var type = $(".selected").html();
+            var start = $("#page").val();
+            $.post("http://localhost:8080/Srt_war/Pro/paramFind", $.param({type: type,start:start}) + '&' + $("#shaixuan").serialize(), function(info) {
+                var lis;
+                alert("返回");
+                if (info.data[0].length > 0) {
+                    for (var i = 0; i < info.data[0].length; i++) {
+                        var li = '<li pid="2" pur2="" picur2="" class="pic-txt clearfix">\n' +
+                            '                                        <a target="_blank" href="" class="img" rel="" data-rel=""></a>\n' +
+                            '                                        <dl class="mid">\n' +
+                            '                                            <dt><a target="_blank" href="" class="title">' + info.data[0][i].pro_NAME + '</a></dt>\n' +
+                            '                                            <dd class="h46">\n' +
+                            '                                            <input type="hidden" value="'+info.data[0][i].id+'">\n' +
+                            '                                                <i id="hexin"><em>品牌:</em>' + info.data[0][i].pro_BRAND + '</i>\n' +
+                            '                                                <i id="type"><em>销量:</em>' + info.data[0][i].pro_SALES_VOLUME + '</i>\n' +
+                            '                                                <i><em> 安全等级:</em>' + info.data[0][i].pro_SAFELEVEL + '</i>\n' +
+                            '                                                <i><em>评分:</em>' + info.data[0][i].pro_AVG_SCORE + '</i>\n' +
+                            '                                                <i><em> 工作功率:</em>8 </i>\n' +
+                            '                                            </dd>\n' +
+                            '                                            <dd><a target="_blank" href="" class="mcs">更多参数&gt;&gt;</a>\n' +
+                            '                                            </dd>\n' +
+                            '                                            <div class="rig"><i class="price" id="price">' + info.data[0][i].pro_PRICE + '</i><a target="_self" class="choice" id="xuanyong" onclick="xuanyong(this)" name="' + i + '">选用</a>\n' +
+                            '                                            </div>\n' +
+                            '                                        </dl>\n' +
+                            '                                    </li>\n';
+                        lis += li;
+                    }
+                    lis = lis + '<li class="last">\n' +
+                        '                                        <div class="pages pconline_page">\n' +
+                        '                                            <input type="text" value="'+start+'" style="width: 30px" id="page">\n' +
+                        '                                            <button title="提交" value="提交" onclick="tijiaoPage()">提交</button>\n' +
+                        '                                            <span>共有'+info.data[1]+'</span>\n' +
+                        '                                            <span>现在第'+start+'页</span>\n' +
+                        '                                        </div>\n' +
+                        '                                    </li>';
+                    $("#showlist").html(lis);
+                    $("#showlist").html($("#showlist").html().split("undefined").join(""));
+                } else {
+                    alert("wu");
+                    $("#showlist").html("暂无");
+                }
+
+            });
+
+        }
+        // $(function() {
+        //     $("#shaixuan").submit(function() {
+        //         alert('提交');
+        //         var type = $(".selected").html();
+        //         $.post("http://localhost:8080/Srt_war/Pro/paramFind", $.param({type: type,start:1}) + '&' + $("#shaixuan").serialize(), function(info) {
+        //             var lis;
+        //             alert("返回");
+        //             if (info.data.length > 0) {
+        //                 for (var i = 0; i < info.data.length; i++) {
+        //                     var li = '<li pid="2" pur2="" picur2="" class="pic-txt clearfix">\n' +
+        //                         '                                        <a target="_blank" href="" class="img" rel="" data-rel=""></a>\n' +
+        //                         '                                        <dl class="mid">\n' +
+        //                         '                                            <dt><a target="_blank" href="" class="title">' + info.data[i].pro_NAME + '</a></dt>\n' +
+        //                         '                                            <dd class="h46">\n' +
+        //                         '                                                <i id="hexin"><em>品牌:</em>' + info.data[i].pro_BRAND + '</i>\n' +
+        //                         '                                                <i id="type"><em>销量:</em>' + info.data[i].pro_SALES_VOLUME + '</i>\n' +
+        //                         '                                                <i><em> 安全等级:</em>' + info.data[i].pro_SAFELEVEL + '</i>\n' +
+        //                         '                                                <i><em>评分:</em>' + info.data[i].pro_AVG_SCORE + '</i>\n' +
+        //                         '                                                <i><em> 工作功率:</em>8 </i>\n' +
+        //                         '                                            </dd>\n' +
+        //                         '                                            <dd><a target="_blank" href="" class="mcs">更多参数&gt;&gt;</a>\n' +
+        //                         '                                            </dd>\n' +
+        //                         '                                            <div class="rig"><i class="price" id="price">' + info.data[i].pro_PRICE + '</i><a target="_self" class="choice" id="xuanyong" onclick="xuanyong(this)" name="' + i + '">选用</a>\n' +
+        //                         '                                            </div>\n' +
+        //                         '                                        </dl>\n' +
+        //                         '                                    </li>\n';
+        //                     lis += li;
+        //                 }
+        //                 $("#showlist").html(lis);
+        //             } else {
+        //                 alert("wu");
+        //                 return false;
+        //             }
+        //
+        //         });
+        //     });
+        //
+        // });
+
+        function findOne(obj) {
+            var name = $(obj).text();
+            $("#condition").html(name + "筛选条件");
+            $("#pname").val(name);
+            $("#yizhaodao").html("已找到的" + name);
+            if (name == "石材") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="荒料板材">荒料板材</option>\n' +
+                    '\t\t\t\t\t<option value="shihui">环境石材</option>\n' +
+                    '\t\t\t\t\t<option value="石膏">建筑配套</option>\n' +
+                    '\t\t\t\t\t<option value="砂浆">柱/柱配套</option>\n' +
+                    '\t\t\t\t\t<option value="砖瓦砌块">石材家具</option>\n' +
+                    '\t\t\t\t\t<option value="混泥土制品">石雕</option>\n' +
+                    '\t\t\t\t\t<option value="砂石沙土">墓碑</option>\n' +
+                    '\t\t\t\t\t<option value="混泥土制品">石材工具</option>\n' +
+                    '\t\t\t\t\t<option value="砂石沙土">石工艺品</option>\n' +
+                    '\t\t\t\t\t<option value="混泥土制品">石料</option>\n' +
+                    '\t\t\t\t\t<option value="砂石沙土">异行工艺</option>\n' +
+                    '\t\t\t\t\t<option value="沙土">养护辅料</option>';
+            }
+            if (name == "竹木材料") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="竹木板材">竹木板材</option>\n' +
+                    '\t\t\t\t\t<option value="竹子">竹子</option>\n' +
+                    '\t\t\t\t\t<option value="橡胶板">橡胶板</option>\n' +
+                    '\t\t\t\t\t<option value="竹单板">竹单板</option>\n' +
+                    '\t\t\t\t\t<option value="竹木辅料">竹木辅料</option>\n' +
+                    '\t\t\t\t\t<option value="竹木工艺品">竹木工艺品</option>\n' +
+                    '\t\t\t\t\t<option value="砂木质材料">砂木质材料</option>\n' +
+                    '\t\t\t\t\t<option value="其他竹木板材">其他竹木板材</option>';
+                '\t\t\t\t\t<option value="其他木质材料">其他木质材料</option>';
+            }
+
+
+            if (name == "金属材料") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="金属板材">金属板材</option>\n' +
+                    '\t\t\t\t\t<option value="金属型材">金属型材</option>\n' +
+                    '\t\t\t\t\t<option value="金属管件">金属管件</option>\n' +
+                    '\t\t\t\t\t<option value="金属网">金属网</option>\n' +
+                    '\t\t\t\t\t<option value="钢线（棒）">钢线（棒）</option>\n' +
+                    '\t\t\t\t\t<option value="钢带（卷）">钢带（卷）</option>\n' +
+                    '\t\t\t\t\t<option value="金属马赛克">金属马赛克</option>' +
+                    '\t\t\t\t\t<option value="铝合金">铝合金</option>' +
+                    '\t\t\t\t\t<option value="其他金属材料">其他金属材料</option>';
+            }
+
+
+
+
+            if (name == "专用建材") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="防水&防潮材料">防水&防潮材料</option>\n' +
+                    '\t\t\t\t\t<option value="密封&防腐材料">密封&防腐材料</option>\n' +
+                    '\t\t\t\t\t<option value="耐火&防火材料">耐火&防火材料</option>\n' +
+                    '\t\t\t\t\t<option value="隔音&吸声材料">隔音&吸声材料</option>\n' +
+                    '\t\t\t\t\t<option value="边形缝装置">边形缝装置</option>\n' +
+                    '\t\t\t\t\t<option value="装饰线板">装饰线板</option>\n' +
+                    '\t\t\t\t\t<option value="工地施工材料">工地施工材料</option>' +
+                    '\t\t\t\t\t<option value="新型建材">新型建材</option>' +
+                    '\t\t\t\t\t<option value="防水卷材">防水卷材</option>' +
+                    '\t\t\t\t\t<option value="展示架">展示架</option>' +
+                    '\t\t\t\t\t<option value="特种建材">特种建材</option>';
+            }
+
+
+
+
+
+            if (name == "橡胶塑料") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="通用塑料">通用塑料</option>\n' +
+                    '\t\t\t\t\t<option value="工程塑料">工程塑料</option>\n' +
+                    '\t\t\t\t\t<option value="天然塑料">天然塑料</option>\n' +
+                    '\t\t\t\t\t<option value="合成橡胶">合成橡胶</option>\n' +
+                    '\t\t\t\t\t<option value="热塑性弹性体">热塑性弹性体</option>\n' +
+                    '\t\t\t\t\t<option value="再生塑料">再生塑料</option>\n' +
+                    '\t\t\t\t\t<option value="特种塑料">特种塑料</option>' +
+                    '\t\t\t\t\t<option value="泡沫塑料">泡沫塑料</option>' +
+                    '\t\t\t\t\t<option value="塑料板材">塑料板材</option>\n' +
+                    '\t\t\t\t\t<option value="塑料材型">塑料材型</option>\n' +
+                    '\t\t\t\t\t<option value="塑料管">塑料管</option>\n' +
+                    '\t\t\t\t\t<option value="海绵">海绵</option>\n' +
+                    '\t\t\t\t\t<option value="塑料焊条">塑料焊条</option>\n' +
+                    '\t\t\t\t\t<option value="塑料薄膜">塑料薄膜</option>\n' +
+                    '\t\t\t\t\t<option value="橡胶管材">橡胶管材</option>' +
+                    '\t\t\t\t\t<option value="橡胶板材">橡胶板材</option>' +
+                    '\t\t\t\t\t<option value="废橡胶">废橡胶</option>' +
+                    '\t\t\t\t\t<option value="塑料工艺品">塑料工艺品</option>' +
+                    '\t\t\t\t\t<option value="其他橡胶塑料">其他橡胶塑料</option>';
+
+
+            }
+
+
+
+
+
+            if (name == "陶瓷") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="日用陶瓷">日用陶瓷</option>\n' +
+                    '\t\t\t\t\t<option value="工艺陶瓷">工艺陶瓷</option>\n' +
+                    '\t\t\t\t\t<option value="建筑陶瓷">建筑陶瓷</option>\n' +
+                    '\t\t\t\t\t<option value="卫浴陶瓷">卫浴陶瓷</option>\n' +
+                    '\t\t\t\t\t<option value="工业陶瓷">工业陶瓷</option>\n' +
+                    '\t\t\t\t\t<option value="特种陶瓷">特种陶瓷</option>\n' +
+                    '\t\t\t\t\t<option value="陶瓷原料">陶瓷原料</option>' +
+                    '\t\t\t\t\t<option value="陶瓷颜料">陶瓷颜料</option>' +
+                    '\t\t\t\t\t<option value="陶瓷色料">陶瓷色料</option>' +
+                    '\t\t\t\t\t<option value="陶瓷熔块">陶瓷熔块</option>\n' +
+                    '\t\t\t\t\t<option value="陶瓷辅料">陶瓷辅料</option>\n' +
+                    '\t\t\t\t\t<option value="陶瓷溶剂">陶瓷溶剂</option>\n' +
+                    '\t\t\t\t\t<option value="陶瓷马赛克">陶瓷马赛克</option>\n' +
+                    '\t\t\t\t\t<option value="陶瓷能源">陶瓷能源</option>\n' +
+                    '\t\t\t\t\t<option value="陶瓷工艺品">陶瓷工艺品</option>\n' +
+                    '\t\t\t\t\t<option value="陶瓷填料">陶瓷填料</option>' +
+                    '\t\t\t\t\t<option value="陶瓷模具">陶瓷模具</option>' +
+                    '\t\t\t\t\t<option value="其他陶瓷原料">其他陶瓷原料</option>';
+            }
+
+
+
+            if (name == "墙体幕墙") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="幕墙">幕墙</option>\n' +
+                    '\t\t\t\t\t<option value="壁纸">壁纸</option>\n' +
+                    '\t\t\t\t\t<option value="幕墙壁纸原料">幕墙壁纸原料</option>\n' +
+                    '\t\t\t\t\t<option value="硅藻泥">硅藻泥</option>\n' +
+                    '\t\t\t\t\t<option value="墙面装饰">墙面装饰</option>\n' +
+                    '\t\t\t\t\t<option value="背景墙">背景墙</option>\n' +
+                    '\t\t\t\t\t<option value="墙步">墙步</option>' +
+                    '\t\t\t\t\t<option value="集成墙面">集成墙面</option>';
+            }
+
+
+
+
+
+            if (name == "玻璃") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="装饰玻璃">装饰玻璃</option>\n' +
+                    '\t\t\t\t\t<option value="增强玻璃">增强玻璃</option>\n' +
+                    '\t\t\t\t\t<option value="镀膜玻璃">镀膜玻璃</option>\n' +
+                    '\t\t\t\t\t<option value="其他玻璃">其他玻璃</option>\n' +
+                    '\t\t\t\t\t<option value="玻璃原片">玻璃原片</option>\n' +
+                    '\t\t\t\t\t<option value="玻璃马赛克">玻璃马赛克</option>\n' +
+                    '\t\t\t\t\t<option value="玻璃工艺品">玻璃工艺品</option>' +
+                    '\t\t\t\t\t<option value="玻璃原料辅料">玻璃原料辅料</option>' +
+                    '\t\t\t\t\t<option value="仪表玻璃">仪表玻璃</option>' +
+                    '\t\t\t\t\t<option value="玻璃工具">玻璃工具</option>\n' +
+                    '\t\t\t\t\t<option value="家电玻璃">家电玻璃</option>' +
+                    '\t\t\t\t\t<option value="玻璃制品">玻璃制品</option>' +
+                    '\t\t\t\t\t<option value="其他建筑玻璃">其他建筑玻璃</option>';
+            }
+
+
+
+            if (name == "涂料") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="UV涂料">UV涂料</option>\n' +
+                    '\t\t\t\t\t<option value="PVC涂料">PVC涂料</option>\n' +
+                    '\t\t\t\t\t<option value="腻子">腻子</option>\n' +
+                    '\t\t\t\t\t<option value="原子灰">原子灰</option>\n' +
+                    '\t\t\t\t\t<option value="粉末涂料">粉末涂料</option>\n' +
+                    '\t\t\t\t\t<option value="纸张涂料">纸张涂料</option>\n' +
+                    '\t\t\t\t\t<option value="卷材涂料">卷材涂料</option>' +
+                    '\t\t\t\t\t<option value="金属涂料">金属涂料</option>' +
+                    '\t\t\t\t\t<option value="木器涂料">木器涂料</option>' +
+                    '\t\t\t\t\t<option value="塑料涂料">塑料涂料</option>\n' +
+                    '\t\t\t\t\t<option value="印染涂料">印染涂料</option>\n' +
+                    '\t\t\t\t\t<option value="艺术涂料">艺术涂料</option>\n' +
+                    '\t\t\t\t\t<option value="仿瓷涂料">仿瓷涂料</option>\n' +
+                    '\t\t\t\t\t<option value="路用涂料">路用涂料</option>\n' +
+                    '\t\t\t\t\t<option value="桥梁涂料">桥梁涂料</option>\n' +
+                    '\t\t\t\t\t<option value="地板涂料">地板涂料</option>' +
+                    '\t\t\t\t\t<option value="墙内涂料">墙内涂料</option>';
+
+            }
+
+            if (name == "门窗") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="门">门</option>' +
+                    '\t\t\t\t\t<option value="窗">窗</option>' +
+                    '\t\t\t\t\t<option value="门窗配件">门窗配件</option>';
+            }
+
+            if (name == "橱衣柜") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="橱柜">橱柜</option>' +
+                    '\t\t\t\t\t<option value="衣柜">衣柜</option>';
+            }
+
+            if (name == "机械设备") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="挖掘机器">挖掘机器</option>\n' +
+                    '\t\t\t\t\t<option value="铲土运输机械">铲土运输机械</option>\n' +
+                    '\t\t\t\t\t<option value="工程机械配件">工程机械配件</option>\n' +
+                    '\t\t\t\t\t<option value="起重机械">起重机械</option>\n' +
+                    '\t\t\t\t\t<option value="压实机械">压实机械</option>\n' +
+                    '\t\t\t\t\t<option value="桩工机械">桩工机械</option>\n' +
+                    '\t\t\t\t\t<option value="混泥土机械">混泥土机械</option>' +
+                    '\t\t\t\t\t<option value="凿岩机械">凿岩机械</option>' +
+                    '\t\t\t\t\t<option value="金属加工机械">金属加工机械</option>' +
+                    '\t\t\t\t\t<option value="地板生产设备">地板生产设备</option>' +
+                    '\t\t\t\t\t<option value="塑料生产加工设备">塑料生产加工设备</option>' +
+                    '\t\t\t\t\t<option value="陶瓷生产加工设备">陶瓷生产加工设备</option>' +
+                    '\t\t\t\t\t<option value="其他建材生产加工机械">其他建材生产加工机械</option>';
+            }
+
+            if (name == "仪器仪表") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="量具">量具</option>\n' +
+                    '\t\t\t\t\t<option value="室内环保检测仪器">室内环保检测仪器</option>\n' +
+                    '\t\t\t\t\t<option value="衡器">衡器</option>\n' +
+                    '\t\t\t\t\t<option value="流量仪表">流量仪表</option>\n' +
+                    '\t\t\t\t\t<option value="温湿度仪表">温湿度仪表</option>\n' +
+                    '\t\t\t\t\t<option value="压力仪表">压力仪表</option>\n' +
+                    '\t\t\t\t\t<option value="变送器">变送器</option>' +
+                    '\t\t\t\t\t<option value="记录仪器">记录仪器</option>' +
+                    '\t\t\t\t\t<option value="分析仪器">分析仪器</option>' +
+                    '\t\t\t\t\t<option value="光学仪器">光学仪器</option>' +
+                    '\t\t\t\t\t<option value="电流表">电流表</option>' +
+                    '\t\t\t\t\t<option value="其他仪器仪表">其他仪器仪表</option>';
+            }
+            if (name == "灯具照明") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="专门用途灯具">专门用途灯具</option>\n' +
+                    '\t\t\t\t\t<option value="室内照明灯具">室内照明灯具</option>\n' +
+                    '\t\t\t\t\t<option value="室外照明灯具">室外照明灯具</option>\n' +
+                    '\t\t\t\t\t<option value="灯具配附件">灯具配附件</option>\n' +
+                    '\t\t\t\t\t<option value="其他灯具">其他灯具</option>\n' +
+                    '\t\t\t\t\t<option value="电光源材料">电光源材料</option>\n' +
+                    '\t\t\t\t\t<option value="彩灯">彩灯</option>\n' +
+                    '\t\t\t\t\t<option value="商业照明">商业照明</option>' +
+                    '\t\t\t\t\t<option value="点光源">点光源</option>';
+            } else if (name == "卫浴洁具") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="浴房">浴房</option>\n' +
+                    '\t\t\t\t\t<option value="面盆">面盆</option>\n' +
+                    '\t\t\t\t\t<option value="便器">便器</option>\n' +
+                    '\t\t\t\t\t<option value="浴缸">浴缸</option>\n' +
+                    '\t\t\t\t\t<option value="卫浴电器">卫浴电器</option>\n' +
+                    '\t\t\t\t\t<option value="玻璃洁具">玻璃洁具</option>\n' +
+                    '\t\t\t\t\t<option value="淋浴屏">淋浴屏</option>\n' +
+                    '\t\t\t\t\t<option value="足浴桶">足浴桶</option>' +
+                    '\t\t\t\t\t<option value="不锈钢槽">不锈钢槽</option>' +
+                    '\t\t\t\t\t<option value="共用卫浴设施">共用卫浴设施</option>' +
+                    '\t\t\t\t\t<option value="其他卫浴洁具">其他卫浴洁具</option>';
+            } else if (name == "吊顶隔断") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="龙骨">龙骨</option>\n' +
+                    '\t\t\t\t\t<option value="软膜吊顶">软膜吊顶</option>\n' +
+                    '\t\t\t\t\t<option value="塑钢吊顶">塑钢吊顶</option>\n' +
+                    '\t\t\t\t\t<option value="金属吊顶">金属吊顶</option>\n' +
+                    '\t\t\t\t\t<option value="石膏板吊顶">石膏板吊顶</option>\n' +
+                    '\t\t\t\t\t<option value="铝扣板吊顶">铝扣板吊顶</option>\n' +
+                    '\t\t\t\t\t<option value="集成吊顶">集成吊顶</option>\n' +
+                    '\t\t\t\t\t<option value="隔断吊顶">隔断吊顶</option>' +
+                    '\t\t\t\t\t<option value="天花吊顶">天花吊顶</option>' +
+                    '\t\t\t\t\t<option value="隔断隔墙">隔断隔墙</option>' +
+                    '\t\t\t\t\t<option value="阳光板">阳光板</option>' +
+                    '\t\t\t\t\t<option value="吊顶配件">吊顶配件</option>' +
+                    '\t\t\t\t\t<option value="吊顶材料">吊顶材料</option>' +
+                    '\t\t\t\t\t<option value="集成墙面">集成墙面</option>' +
+                    '\t\t\t\t\t<option value="集成电器">集成电器</option>' +
+                    '\t\t\t\t\t<option value="墙体">墙体</option>' +
+                    '\t\t\t\t\t<option value="其他吊顶">其他吊顶</option>';
+            } else if (name == "地板") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="竹地板">竹地板</option>\n' +
+                    '\t\t\t\t\t<option value="木地板">木地板</option>\n' +
+                    '\t\t\t\t\t<option value="实木地板">实木地板</option>\n' +
+                    '\t\t\t\t\t<option value="软木地板">软木地板</option>\n' +
+                    '\t\t\t\t\t<option value="塑料地板">塑料地板</option>\n' +
+                    '\t\t\t\t\t<option value="橡胶地板">橡胶地板</option>\n' +
+                    '\t\t\t\t\t<option value="塑胶地板">塑胶地板</option>\n' +
+                    '\t\t\t\t\t<option value="PVC地板">PVC地板</option>' +
+                    '\t\t\t\t\t<option value="复合地板">复合地板</option>' +
+                    '\t\t\t\t\t<option value="亚麻地板">亚麻地板</option>' +
+                    '\t\t\t\t\t<option value="柞木地板">柞木地板</option>' +
+                    '\t\t\t\t\t<option value="环氧树脂地板">环氧树脂地板</option>' +
+                    '\t\t\t\t\t<option value="强化地板">强化地板</option>' +
+                    '\t\t\t\t\t<option value="防静电地板">防静电地板</option>' +
+                    '\t\t\t\t\t<option value="地暖地板">地暖地板</option>' +
+                    '\t\t\t\t\t<option value="地板附件">地板附件</option>' +
+                    '\t\t\t\t\t<option value="地板配件">地板配件</option>' +
+                    '\t\t\t\t\t<option value="地板原料">地板原料</option>' +
+                    '\t\t\t\t\t<option value="木塑地板">木塑地板</option>' +
+                    '\t\t\t\t\t<option value="LVT地板">LVT地板</option>' +
+                    '\t\t\t\t\t<option value="SPC地板">SPC地板</option>' +
+                    '\t\t\t\t\t<option value="WPC地板">WPC地板</option>' +
+                    '\t\t\t\t\t<option value="其他地板">其他地板</option>';
+            } else if (name == "管材管件") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="管材">管材</option>\n' +
+                    '\t\t\t\t\t<option value="异径管">异径管</option>\n' +
+                    '\t\t\t\t\t<option value="三通">三通</option>\n' +
+                    '\t\t\t\t\t<option value="四通">四通</option>\n' +
+                    '\t\t\t\t\t<option value="法兰">法兰</option>\n' +
+                    '\t\t\t\t\t<option value="弯头">弯头</option>\n' +
+                    '\t\t\t\t\t<option value="接头">接头</option>\n' +
+                    '\t\t\t\t\t<option value="阀门">阀门</option>' +
+                    '\t\t\t\t\t<option value="泵">泵</option>' +
+                    '\t\t\t\t\t<option value="管道">管道</option>' +
+                    '\t\t\t\t\t<option value="其他管件">其他管件</option>' +
+                    '\t\t\t\t\t<option value="管件">管件</option>';
+            } else if (name == "五金工具") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="卫浴五金">卫浴五金</option>\n' +
+                    '\t\t\t\t\t<option value="水暖五金">水暖五金</option>\n' +
+                    '\t\t\t\t\t<option value="门窗五金">门窗五金</option>\n' +
+                    '\t\t\t\t\t<option value="通用五金配件">通用五金配件</option>\n' +
+                    '\t\t\t\t\t<option value="锁具">锁具</option>\n' +
+                    '\t\t\t\t\t<option value="磨具">磨具</option>\n' +
+                    '\t\t\t\t\t<option value="磨料">磨料</option>\n' +
+                    '\t\t\t\t\t<option value="密封件">密封件</option>' +
+                    '\t\t\t\t\t<option value="紧固件&连接件">紧固件&连接件</option>' +
+                    '\t\t\t\t\t<option value="匠作工具">匠作工具</option>' +
+                    '\t\t\t\t\t<option value="气动工具">气动工具</option>' +
+                    '\t\t\t\t\t<option value="钳子">钳子</option>' +
+                    '\t\t\t\t\t<option value="扳手">扳手</option>' +
+                    '\t\t\t\t\t<option value="机械五金">机械五金</option>' +
+                    '\t\t\t\t\t<option value="厨房五金">厨房五金</option>' +
+                    '\t\t\t\t\t<option value="蜗杆">蜗杆</option>' +
+                    '\t\t\t\t\t<option value="雨刮器">雨刮器</option>' +
+                    '\t\t\t\t\t<option value="打标机">打标机</option>' +
+                    '\t\t\t\t\t<option value="齿轮箱">齿轮箱</option>' +
+                    '\t\t\t\t\t<option value="涡轮">涡轮</option>' +
+                    '\t\t\t\t\t<option value="其他五金工具">其他五金工具</option>';
+            } else if (name == "电工电气") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="开关">开关</option>\n' +
+                    '\t\t\t\t\t<option value="插座">插座</option>\n' +
+                    '\t\t\t\t\t<option value="插头">插头</option>\n' +
+                    '\t\t\t\t\t<option value="电线电缆">电线电缆</option>\n' +
+                    '\t\t\t\t\t<option value="低压电器">低压电器</option>\n' +
+                    '\t\t\t\t\t<option value="绝热材料">绝热材料</option>\n' +
+                    '\t\t\t\t\t<option value="电源">电源</option>\n' +
+                    '\t\t\t\t\t<option value="电池">电池</option>' +
+                    '\t\t\t\t\t<option value="电机">电机</option>' +
+                    '\t\t\t\t\t<option value="稳压器">稳压器</option>' +
+                    '\t\t\t\t\t<option value="变压器">变压器</option>' +
+                    '\t\t\t\t\t<option value="散热器">散热器</option>' +
+                    '\t\t\t\t\t<option value="换热器">换热器</option>' +
+                    '\t\t\t\t\t<option value="继电器">继电器</option>' +
+                    '\t\t\t\t\t<option value="无线通讯设备">无线通讯设备</option>' +
+                    '\t\t\t\t\t<option value="电容器">电容器</option>' +
+                    '\t\t\t\t\t<option value="工装系统及装备">工装系统及装备</option>' +
+                    '\t\t\t\t\t<option value="发电设备">发电设备</option>' +
+                    '\t\t\t\t\t<option value="磨抛光电动工具">磨抛光电动工具</option>' +
+                    '\t\t\t\t\t<option value="切削电动工具">切削电动工具</option>' +
+                    '\t\t\t\t\t<option value="装配电动工具">装配电动工具</option>' +
+                    '\t\t\t\t\t<option value="建筑电器">建筑电器</option>' +
+                    '\t\t\t\t\t<option value="电气电工成套设备">电气电工成套设备</option>' +
+                    '\t\t\t\t\t<option value="其他电工电气">其他电工电气</option>';
+            } else if (name == "厨房设施") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="整体厨房">整体厨房</option>\n' +
+                    '\t\t\t\t\t<option value="壁橱&橱柜">壁橱&橱柜</option>\n' +
+                    '\t\t\t\t\t<option value="操作台">操作台</option>\n' +
+                    '\t\t\t\t\t<option value="水槽&洗涤槽">水槽&洗涤槽</option>\n' +
+                    '\t\t\t\t\t<option value="挂件">挂件</option>\n' +
+                    '\t\t\t\t\t<option value="橱柜配件">橱柜配件</option>\n' +
+                    '\t\t\t\t\t<option value="厨房电器">厨房电器</option>\n' +
+                    '\t\t\t\t\t<option value="饮水设备">饮水设备</option>' +
+                    '\t\t\t\t\t<option value="厨房厨具">厨房厨具</option>' +
+                    '\t\t\t\t\t<option value="橱柜台面">橱柜台面</option>' +
+                    '\t\t\t\t\t<option value="其他厨房设施">其他厨房设施</option>';
+            } else if (name == "装修施工") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="楼梯">楼梯</option>\n' +
+                    '\t\t\t\t\t<option value="墙体">墙体</option>\n' +
+                    '\t\t\t\t\t<option value="园林">园林</option>\n' +
+                    '\t\t\t\t\t<option value="亭子">亭子</option>\n' +
+                    '\t\t\t\t\t<option value="庭院">庭院</option>\n' +
+                    '\t\t\t\t\t<option value="活动房">活动房</option>\n' +
+                    '\t\t\t\t\t<option value="阳光房">阳光房</option>\n' +
+                    '\t\t\t\t\t<option value="牌坊">牌坊</option>' +
+                    '\t\t\t\t\t<option value="护栏">护栏</option>' +
+                    '\t\t\t\t\t<option value="阳篷&雨篷">阳篷&雨篷</option>' +
+                    '\t\t\t\t\t<option value="阳台">阳台</option>' +
+                    '\t\t\t\t\t<option value="壁炉">壁炉</option>' +
+                    '\t\t\t\t\t<option value="地坪">地坪</option>' +
+                    '\t\t\t\t\t<option value="台面">台面</option>' +
+                    '\t\t\t\t\t<option value="柱子">柱子</option>' +
+                    '\t\t\t\t\t<option value="楼宇设施">楼宇设施</option>' +
+                    '\t\t\t\t\t<option value="管道系统">管道系统</option>' +
+                    '\t\t\t\t\t<option value="其他装修施工">其他装修施工</option>';
+            } else if (name == "安防") {
+                var li = '<option value="不限" selected="">不限</option>\n' +
+                    '\t\t\t\t\t<option value="防护装备">防护装备</option>\n' +
+                    '\t\t\t\t\t<option value="防盗及报警系统">防盗及报警系统</option>\n' +
+                    '\t\t\t\t\t<option value="门禁考勤器">门禁考勤器</option>\n' +
+                    '\t\t\t\t\t<option value="安防配件及周边器材">安防配件及周边器材</option>\n' +
+                    '\t\t\t\t\t<option value="监控器材/监控系统">监控器材/监控系统</option>\n' +
+                    '\t\t\t\t\t<option value="安全监测设备">安全监测设备</option>\n' +
+                    '\t\t\t\t\t<option value="伪造技术产品">伪造技术产品</option>\n' +
+                    '\t\t\t\t\t<option value="生物识别技术设备">生物识别技术设备</option>';
+            } else if (name == "家具用品") {
+                var li = '\t\t\t\t\t<option value="楼梯">楼梯</option>\n' +
+                    '\t\t\t\t\t<option value="日用品">日用品</option>\n' +
+                    '\t\t\t\t\t<option value="清洁工具">清洁工具</option>\n' +
+                    '\t\t\t\t\t<option value="家用纺织">家用纺织</option>\n' +
+                    '\t\t\t\t\t<option value="家具">家具</option>\n' +
+                    '\t\t\t\t\t<option value="地毯">地毯</option>\n' +
+                    '\t\t\t\t\t<option value="窗帘布艺">窗帘布艺</option>\n' +
+                    '\t\t\t\t\t<option value="家用电器">家用电器</option>' +
+                    '\t\t\t\t\t<option value="厨房用品">厨房用品</option>' +
+                    '\t\t\t\t\t<option value="装饰用品">装饰用品</option>' +
+                    '\t\t\t\t\t<option value="晾衣架">晾衣架</option>' +
+                    '\t\t\t\t\t<option value="衣柜">衣柜</option>' +
+                    '\t\t\t\t\t<option value="其他家居用品">其他家居用品</option>';
+            }
+
+
+
+
+            $("#leimu").html(li);
+
+        }
+        // function xuanyong(){
+        // 	var name = $("#hexin").clone();
+        // 	name.find(':nth-child(n)').remove();
+        // 	alert(name.html());
+        // }
+        function remove(obj) {
+
+            var name = $(obj).parents("tr").find("td:eq(0)").text();
+            //弹出一个确认框
+            var flag = confirm("确认删除" + name + "吗？");
+            if (flag) {
+                //删除当前a所在的tr
+                $(obj).parents("tr").remove();
+                totl2();
+                var totalCount = $("#totalCount").val();
+                totalCount = parseInt(totalCount) - 1;
+                $("#totalCount").val(totalCount);
+
+            }
+            //取消默认行为
+            return false;
+        }
+
+        // $(function () {
+        // 	$(".remove").click(function() {
+        // 		alert("123");
+        // 		var name = $(this).parents("tr").find("td:eq(0)").text();
+        // 		//弹出一个确认框
+        // 		var flag = confirm("确认删除" + name + "吗？");
+        // 		if (flag) {
+        // 			//删除当前a所在的tr
+        // 			$(this).parents("tr").remove();
+        // 		}
+        // 		//取消默认行为
+        // 		return false;
+        // 	});
+        // });
+    </script>
+
+    <body>
+        <div id="m-topnav">
+            <div class=g-rom>
+                <div class="fl" id="comeBmlink">
+                    欢迎来到建材工厂与建筑公司间信息对称系统
+                    <a class="font_c1" href="F:\JS网页编程\案例\信息对称系统\首页\index.html" rel="nofollow">首页</a>
+                    <a class="font_c2" id="link" href="F:\JS网页编程\案例\信息对称系统\登录、注册\login.html" rel="nofollow">请登录</a>
+                    <a class="font_c1" href="F:\JS网页编程\案例\信息对称系统\登录、注册\register.html" rel="nofollow">免费注册</a>
+                    <a class="font_c2" rel="nofollow">免费咨询：18275166098</a>
+                </div>
+                <div class="clearfix">
+                    <dd class="tool top_my">
+                        <a class="sv" href="F:\JS网页编程\案例\信息对称系统\个人中心\per_center.html" rel="nofollow">个人中心</a>
+                        <div class="menu" style="display: none;">
+                            <div class="menu_list">
+                                <h5>我的发布</h5>
+                                <a href="javascript:;" rel="nofollow">发布产品信息</a>
+                                <a href="javascript:;" rel="nofollow">管理产品信息</a>
+                            </div>
+                            <div class="menu_list">
+                                <h5>我的采购</h5>
+                                <a href="javascript:;" rel="nofollow">发布采购信息</a>
+                                <a href="javascript:;" rel="nofollow">管理采购信息</a>
+                            </div>
+                            <div class="menu_list">
+                                <h5>我的订单</h5>
+                                <a href="javascript:;" rel="nofollow">订单信息</a>
+                                <a href="javascript:;" rel="nofollow">管理信息</a>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="tool top_service">
+                        <a class="sv" href="" rel="nofollow">客服中心</a>
+                        <div class="menu" style="display: none;">
+                            <a href="javascript:;" rel="nofollow">在线留言</a>
+                            <a href="javascript:;" rel="nofollow">人工客服</a>
+                        </div>
+                    </dd>
+                    <dd class="tool top_iphone">
+                        <a class="sv" href="" rel="nofollow">手机站</a class="sv">
+                    <div class="menu" style="display: none;">
+                        <a href="javascript:;" rel="nofollow">
+                            <img class="p_QR_img" src="images/phone_QR.png" alt="手机端二维码">
+                        </a>
+                </div>
+                </dd>
+                <dd class="tool top_weixin">
+                    <a class="sv" href="" rel="nofollow">微信站</a class="sv">
+                    <div class="menu">
+                        <a href="javascript:;" rel="nofollow">
+                            <img class="w_QR_img" src="images/weixin_QR.png" alt="微信端二维码">
+                        </a>
+            </div>
+            </dd>
+            <dd class="tool top_nav">
+                <a class="sv" href="" rel="nofollow">网站导航</a>
+                <div class="menu" style="display: none;">
+                    <div class="menu_list">
+                        <h5>热门服务</h5>
+                        <a title="采购大厅" href="javascript:;" target="_blank" rel="nofollow">采购大厅</a>
+                        <a title="招商加盟" href="javascript:;" target="_blank" rel="nofollow">招商加盟</a>
+                        <a title="交易论坛" href="javascript:;" target="_blank" rel="nofollow">交易论坛</a>
+                        <a title="行业行情" href="javascript:;" target="_blank" rel="nofollow">行业行情</a>
+                    </div>
+                    <div class="menu_list">
+                        <h5>热销产品类</h5>
+                        <a title="家居用品" href="javascript:;" target="_blank" rel="nofollow">家居用品</a>
+                        <a title="橱柜衣柜" href="javascript:;" target="_blank" rel="nofollow">橱柜衣柜</a>
+                        <a title="厨房电器" href="javascript:;" target="_blank" rel="nofollow">厨房电器</a>
+                        <a title="门窗" href="javascript:;" target="_blank" rel="nofollow">门窗</a>
+                        <a title="陶瓷" href="javascript:;" target="_blank" rel="nofollow">陶瓷</a>
+                        <a title="装修施工" href="javascript:;" target="_blank" rel="nofollow">装修施工</a>
+                        <a title="竹木材料" href="javascript:;" target="_blank" rel="nofollow">竹木材料</a>
+                        <a title="金属材料" href="javascript:;" target="_blank" rel="nofollow">金属材料</a>
+                        <a title="墙纸" href="javascript:;" target="_blank" rel="nofollow">墙纸</a>
+                        <a title="木地板" href="javascript:;" target="_blank" rel="nofollow">木地板</a>
+                        <a title="灯具照明" href="javascript:;" target="_blank" rel="nofollow">灯具照明</a>
+                        <a title="智能锁" href="javascript:;" target="_blank" rel="nofollow">智能锁</a>
+                        <a title="集成吊顶" href="javascript:;" target="_blank" rel="nofollow">集成吊顶</a>
+                        <a title="卫洁工具" href="javascript:;" target="_blank" rel="nofollow">卫洁工具</a>
+                        <a title="油漆涂料" href="javascript:;" target="_blank" rel="nofollow">油漆涂料</a>
+                        <a title="防水材料" href="javascript:;" target="_blank" rel="nofollow">防水材料</a>
+                        <a title="机械设备" href="javascript:;" target="_blank" rel="nofollow">机械设备</a>
+                        <a title="管材管件" href="javascript:;" target="_blank" rel="nofollow">管材管件</a>
+                        <a title="净水器" href="javascript:;" target="_blank" rel="nofollow">净水器</a>
+                        <a title="热水器" href="javascript:;" target="_blank" rel="nofollow">热水器</a>
+                    </div>
+                </div>
+            </dd>
+        </div>
+        </div>
+        </div>
+        <!-- <script src="//product.pconline.com.cn/intf/_search_json.jsp?&amp;refresh=true&amp;callback=filter.callback&amp;charset=utf8&amp;sId=20881&amp;bId=&amp;keyword=&amp;pcId=&amp;cId=&amp;cId=&amp;cId=&amp;areaId=1&amp;summaryLen=65&amp;pageNo=1&amp;pageSize=7&amp;order=1"
+charset="utf-8"></script>
+<script src="//product.pconline.com.cn/intf/_cri_json_utf8.jsp?sId=20881&amp;callback=filter.fillFilter" charset="utf-8"></script>
+<script src="//product.pconline.com.cn/intf/_search_json.jsp?&amp;refresh=true&amp;callback=filter.callback&amp;charset=utf8&amp;sId=42997&amp;bId=&amp;keyword=&amp;pcId=&amp;cId=&amp;cId=&amp;cId=&amp;areaId=1&amp;summaryLen=65&amp;pageNo=1&amp;pageSize=7&amp;order=1"
+charset="utf-8"></script>
+<script src="//product.pconline.com.cn/intf/_cri_json_utf8.jsp?sId=42997&amp;callback=filter.fillFilter" charset="utf-8"></script>
+<script src="//product.pconline.com.cn/intf/_search_json.jsp?&amp;refresh=true&amp;callback=filter.callback&amp;charset=utf8&amp;sId=20812&amp;bId=&amp;keyword=&amp;pcId=&amp;cId=&amp;cId=&amp;cId=&amp;areaId=1&amp;summaryLen=65&amp;pageNo=1&amp;pageSize=7&amp;order=1"
+charset="utf-8"></script>
+<script src="//product.pconline.com.cn/intf/_cri_json_utf8.jsp?sId=20812&amp;callback=filter.fillFilter" charset="utf-8"></script> -->
+        <script>
+            if (!window._addIvyID) document.write("<scr" + "ipt src='js/index.js' charset='gbk'><\/scr" + "ipt>");
+        </script>
+        <script src="js/index.js" charset="gbk"></script>
+
+        <!-- 栏目计数器/文章计数器 -->
+        <span class="spanclass">
+        <script>
+            document.write(
+                //"<img style=display:none src=//count5.pconline.com.cn/newcount/count.php?channel=6356&screen=" +
+                screen.width + "*" + screen.height + "&refer=" + encodeURIComponent(document.referrer) +
+                "&anticache=" + new Date().getTime() + "&url=" + encodeURIComponent(location.href) + "&from=cms >");
+        </script>
+        <!-- <img style="display:none" src="//count5.pconline.com.cn/newcount/count.php?channel=6356&amp;screen=1536*864&amp;refer=&amp;anticache=1600163398602&amp;url=https%3A%2F%2Fmydiy.pconline.com.cn%2F%23null&amp;from=cms"> -->
+    </span>
+
+        <div class="doc">
+            <!-- header -->
+            <div class="header">
+                <div class="header-wrap">
+                    <div class="banner clearfix">
+                        <a href="" class="logo"><img src="images/logo.png" height="40"></a>
+                        <div class="head_title_large">信息对称系统</div>
+                        <div class="head_title_small">自助采购</div>
+                        <div class="mark-sub">
+                            <div class="link fc-gray-80">
+                                <a class="font-red" href="">查看我的购买方案</a>
+                                <a href="">如何使用自助采购</a>
+                                <!-- <a href="">显卡天梯图</a> -->
+                            </div>
+                            <div class="ks">
+                                <form action="//ks.pconline.com.cn/" method="get" autocomplete="off" onsubmit="if(this[0].value == this[0].defaultValue){window.open('//ks.pconline.com.cn/');return false;}">
+                                    <div class="ks-input">
+                                        <input type="text" name="q" class="ks-q" onfocus="if(this.value == this.defaultValue) {this.value = '';this.className += ' focus'}" onblur="if(this.value == '') {this.value = this.defaultValue;this.className = this.className.replace(' focus','') }" value="请输入你要查找的产品名称">
+                                        <input type="submit" class="ks-submit" value="搜索">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav">
+                        <span class="mark">
+                        <ul>
+                            <li class="current"><a href="F:/JS网页编程/案例/信息对称系统/自助采购2.0/self_buy.html"
+                                    rel="nofollow">首页</a></li>
+                            <li><a href="" target="" rel="nofollow">网友采购方案</a></li>
+                            <li><a href="" target="" rel="nofollow">采购方案排行</a></li>
+                            <li><a href="" target="" rel="nofollow">专家点评</a></li>
+                            <li><a href="" target="" rel="nofollow">专家推荐</a></li>
+                        </ul>
+                    </span>
+                    </div>
+                    <div class="crumb">
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" id="selected_area" name="selected_area" value="">
+            <!-- /header -->
+            <!-- /wraper -->
+            <div class="wraper" id="Jwrap">
+                <div class="area area-sc1">
+                    <div class="tab-nav-a">
+                        <p class="tab-nav-a-head">请选择配件</p>
+                        <div class="control clearfix" id="paginate-picker">
+                            <span class="toc" type="0" rel="1" onclick="findOne(this);">砌筑材料</span>
+                            <span class="toc" type="1" rel="2" onclick="findOne(this);">石材</span>
+                            <span class="toc" type="2" rel="3" onclick="findOne(this);">竹木材料</span>
+                            <span class="toc" type="3" rel="4" onclick="findOne(this);">金属材料</span>
+                            <span class="toc" type="4" rel="5" onclick="findOne(this);">专用建材</span>
+                            <span class="toc" type="5" rel="6" onclick="findOne(this);">橡胶塑料</span>
+                            <span class="toc" type="6" rel="7" onclick="findOne(this);">陶瓷</span>
+                            <span class="toc" type="7" rel="8" onclick="findOne(this);">墙体幕墙</span>
+                            <span class="toc" type="8" rel="9" onclick="findOne(this);">玻璃</span>
+                            <span class="toc" type="9" rel="10" onclick="findOne(this);">涂料</span>
+                            <span class="toc" type="10" rel="11" onclick="findOne(this);">门窗</span>
+                            <span class="toc" type="11" rel="12" onclick="findOne(this);">灯具照明</span>
+                            <span class="toc" type="12" rel="13" onclick="findOne(this);">卫浴洁具</span>
+                            <span class="toc" type="13" rel="14" onclick="findOne(this);">吊顶隔断</span>
+                            <span class="toc" type="14" rel="15" onclick="findOne(this);">地板</span>
+                            <span class="toc" type="15" rel="16" onclick="findOne(this);">管材管件</span>
+                            <span class="toc" type="16" rel="17" onclick="findOne(this);">五金工具</span>
+                            <span class="toc" type="17" rel="18" onclick="findOne(this);">电工电气</span>
+                            <span class="toc" type="18" rel="19" onclick="findOne(this);">厨房设施</span>
+                            <span class="toc" type="19" rel="20" onclick="findOne(this);">装修施工</span>
+                            <span class="toc" type="20" rel="21" onclick="findOne(this);">安防</span>
+                            <span class="toc" type="21" rel="22" onclick="findOne(this);">家居用品</span>
+                            <span class="toc" type="22" rel="23" onclick="findOne(this);">橱衣柜</span>
+                            <span class="toc" type="23" rel="24" onclick="findOne(this);">机械设备</span>
+                            <span class="toc" type="24" rel="25" onclick="findOne(this);">仪器仪表</span>
+                        </div>
+                    </div>
+                    <div class="tab-wrap-a">
+                        <script language="javaScript" src="js/checkForm.js" charset="GBK"></script>
+
+
+                        <div class="col-a">
+                            <p class="config-list">采购清单</p>
+                            <p class="columns">
+                                <span class="column1">配件名称</span>
+                                <span class="column2">品牌型号</span>
+                                <span class="column3">数量</span>
+                                <span class="column4">单价</span>
+                                <span class="column5">&nbsp;&nbsp;操作</span>
+                            </p>
+                            <script>
+                                function tijiao2() {
+                                    $.post("http://localhost:8080/Srt_war/Ord/purchase", $("#formPaper").serialize(), function (data) {
+                                        if (data.flag == false) {
+                                            alert(data.errorMsg);
+                                        } else {
+                                            alert('提交成功');
+                                        }
+                                    });
+                                }
+                            </script>
+                            <form autocomplete="off"  id="formPaper" target="indexIframe" name="formPaper">
+                                <input type="hidden" name="totalCount" id="totalCount" value="0">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="info infoA" id="paper">
+                                    <tbody>
+
+                                        <!-- <tr pjname="qizhucailiao" type="0" class="">
+
+                                            <td width="16%" class="cap">
+                                                砌筑材料
+                                            </td>
+                                            <td width="36%">
+
+                                            </td>
+                                            <td width="13%">
+                                                <textarea class="" id="" name=""></textarea>
+                                            </td>
+                                            <td width="16%">
+
+                                            </td>
+                                            <td width="14%">
+                                                <a class="remove" target='_self' title='移除' onclick="remove(this)">移除</a>
+                                            </td>
+
+                                        </tr> -->
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="6">价格总计：<strong class="red">￥</strong>
+                                                <span class="final" id="domTotalPrice">0</span>
+                                                <input type="hidden" name="totalPrice" id="inputTotalPrice" value="0">
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+
+                                <input type="hidden" id="opr" name="opr" value="add">
+                                <input type="hidden" name="blue_PrintID" value="">
+                                <div class=" addition ">
+                                    <dl class=" title ">
+                                        <dt class=" cap ">采购名称：</dt>
+                                        <dd><input type=" text " title=" 标题~最多可以输入100个字~ " id=" DiyTitle " name=" DiyTitle " value=" " maxlength=" 100 "></dd>
+                                    </dl>
+                                    <dl class=" des ">
+                                        <dt class=" cap ">采购说明：</dt>
+                                        <dd><textarea id=" DiyComment " title=" 采购方案描述~最多可以输入1000个字~ " name=" DiyComment " maxlength=" 1000 "></textarea></dd>
+                                    </dl>
+                                    <dl class=" veri ">
+                                        <dt class=" cap ">验证码：</dt>
+                                        <dd>
+                                            <input id="captcha" name="captcha" class=" yzm " size=" 9 " autocomplete=" off ">
+                                            <img src="http://localhost:8080/Srt_war/checkCode" height="32px" alt="" onclick="changeCheckCode(this)">
+                                            <script type="text/javascript">
+                                                //图片点击事件
+                                                function changeCheckCode(img) {
+                                                    img.src = "http://localhost:8080/Srt_war/checkCode?" + new Date().getTime();
+                                                }
+                                            </script>
+                                        </dd>
+                                    </dl>
+
+                                </div>
+                                <div style="display:none;" id="hiddenContent">
+
+                                </div>
+                                <p class="fuc">
+                                    <input type="button" value="提交方案" class="yellow" onclick="tijiao2()">
+                                    <input type="button" id="submitBtn" value="预览方案" class="blue" onclick="previewCheck();">
+                                </p>
+                                <input type="hidden" name="screenSta" value="">
+                            </form>
+
+
+                        </div>
+                        <iframe style="display: none" ; name="indexIframe" id="indexIframe">
+                    </iframe>
+                        <!--******* ************************************************************************************************************************************************************** -->
+
+                        <div class="filter-head">
+                            <span class="condition" id="condition">砌筑材料筛选条件</span>
+                            <span class="search">
+                            <input onkeypress="if(event.keyCode == 13)enterSearch();" type="text" class="text"
+                                name="product_query" placeholder="请输入品牌或型号">
+                            <input id="searchBtn" type="button" name="search" class="search-bnt" value="搜索">
+                        </span>
+                        </div>
+
+                        <form class="col-b" id="shaixuan">
+                            <input type="hidden" name="pname" value="砌筑材料" id="pname">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">类目:</label>
+
+                                <select name="leimu" lay-filter="aihao" id="leimu">
+                                <option value="不限" selected="">不限</option>
+                                <option value="石灰">石灰</option>
+                                <option value="水泥">水泥</option>
+                                <option value="石膏">石膏</option>
+                                <option value="砂浆">砂浆</option>
+                                <option value="砖瓦砌块">砖瓦砌块</option>
+                                <option value="混泥土制品">混泥土制品</option>
+                                <option value="砂石沙土">砂石沙土</option>
+                                <option value="沙土">沙土</option>
+
+                            </select>
+
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">有无价格:</label>
+
+                                <select name="jiage" lay-filter="aihao" id="jiage">
+                                <option value="不限" selected="">不限</option>
+                                <option value="有价格">有价格</option>
+                                <option value="无价格">无价格</option>
+
+
+                            </select>
+
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">地区:</label>
+
+                                <select name="diqu" lay-filter="aihao">
+                                <option value="不限" selected="">不限</option>
+                                <option value="华北">华北</option>
+                                <option value="东北">东北</option>
+                                <option value="华东">华东</option>
+                                <option value="华中">华中</option>
+                                <option value="西南">西南</option>
+                                <option value="西北">西北</option>
+                                <option value="华南">华南</option>
+
+
+                            </select>
+
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">供应类型:</label>
+
+                                <select name="gongyingleixing" lay-filter="aihao">
+                                <option value="不限" selected="">不限</option>
+                                <option value="现货/标准品">现货/标准品</option>
+                                <option value="二手/闲置">二手/闲置</option>
+                                <option value="库存/尾货">库存/尾货</option>
+
+                            </select>
+
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">经营模式:</label>
+
+                                <select name="moshi" lay-filter="aihao">
+                                <option value="不限" selected="">不限</option>
+                                <option value="生产加工">生产加工</option>
+                                <option value="经销批发">经销批发</option>
+                                <option value="招商代理">招商代理</option>
+                                <option value="商业服务">商业服务</option>
+
+                            </select>
+
+                            </div>
+                            <input type="button" title="提交" onclick="tijiao()" value="提交">
+
+
+                            <script>
+
+                                function xuan(obj) {
+                                    $(obj).addClass("selected");
+                                    $(obj).siblings("a").removeClass("selected");
+                                    tijiao();
+                                }
+                            </script>
+                            <div class="productList">
+                                <div class="productList-head">
+                                    <span class="mark pListHead" id="yizhaodao">已找到的砌筑材料<em>（224个）</em></span>
+                                    <div class="submark">
+                                        <span class="type" id="">
+                                        <a onclick="xuan(this)" class="selected" name="cate">最热</a>
+                                        <a onclick="xuan(this)" class="" name="cate">最新</a>
+                                        <a onclick="xuan(this)" class="" name="cate">最便宜</a>
+                                        <a onclick="xuan(this)" class="" name="cate">最贵</a>
+                                        <a onclick="xuan(this)" class="last" name="cate">最高推荐</a>
+                                    </span>
+                                    </div>
+                                </div>
+                                <ul class="pic-txt-list" id="showlist">
+                                    <li pid="1150651" purl="" picurl="" class="pic-txt clearfix">
+                                        <a target="_blank" href="" class="img" rel="" data-rel=""></a>
+                                        <dl class="mid">
+                                            <dt><a target="_blank" href="" class="title">Intel酷睿i5 9400F</a></dt>
+                                            <dd class="h46">
+                                                <i id="hexin"><em>核心类型:</em>Ice Lake(第9代) </i>
+                                                <i id="type"><em>接口类型:</em>LGA 1151 </i>
+                                                <i><em> 二级缓存:</em>1.5M</i>
+                                                <i><em>三级缓存:</em>9M </i>
+                                                <i><em> 工作功率:</em>6 </i>
+                                            </dd>
+                                            <dd><a target="_blank" href="" class="mcs">更多参数&gt;&gt;</a>
+                                            </dd>
+                                            <script>
+                                                function totl(price) {
+                                                    var num1 = parseInt($("#domTotalPrice").html());
+                                                    var count = parseInt(price) + num1;
+                                                    alert(count);
+                                                    $("#domTotalPrice").html(count);
+                                                    $("#inputTotalPrice").val(count);
+
+
+                                                }
+                                                function totl2() {
+
+                                                    var sum = 0;
+                                                    if ($("#paper > tbody").children("tr").length > 0) {
+                                                        for (var i = 1; i < $("#paper > tbody").children("tr").length + 1; i++) {
+                                                            $("#paper").children("tbody").children("tr:eq("+(i-1)+")").children("td:eq(3)").each(function() {
+                                                                sum += parseInt($(this).text())*parseInt($(this).siblings("td").children("textarea").val());
+                                                            });
+                                                        }
+                                                    // if ($("#paper > tbody").children("tr").length > 0) {
+                                                    //     for (var i = 1; i < $("#paper > tbody").children("tr").length + 1; i++) {
+                                                    //         $("#paper > tbody > tr:nth-child(" + i + ") > td:nth-child(4)").each(function() {
+                                                    //             sum += parseInt($(this).text())*parseInt($(this).siblings("td").children("textarea").val());
+                                                    //         });
+                                                    //     }
+                                                        $("#domTotalPrice").text(sum);
+                                                        $("#inputTotalPrice").val(sum);
+                                                    }else {
+                                                        $("#domTotalPrice").text("0");
+                                                        $("#inputTotalPrice").val("0");
+                                                    }
+
+
+                                                }
+                                                function xuanyong(obj) {
+
+                                                    var name1 = $(obj).attr("name");
+                                                    var name2 = parseInt(name1);
+                                                    var name = $(obj).parents("div").siblings("dd:eq(0)").children("i:eq(0)").text();
+                                                    var type = $(obj).parents("div").siblings("dd:eq(0)").children("i:eq(1)").text();
+                                                    var id = $(obj).parent("div").siblings("dd:eq(0)").children("input").val();
+                                                    var count = 1;
+                                                    var price = $(obj).siblings("i").text();
+                                                    var html = $("#paper").html();
+                                                    var totalCount = $("#totalCount").val();
+                                                    totalCount = parseInt(totalCount) + 1;
+
+                                                    $("<tr></tr>").append("<td >" + name + "</td>")
+                                                        .append('<td>' + type + '</td> <input type="hidden" name="id'+totalCount+'" id="inputtype" value="'+id+'">')
+                                                        .append(
+                                                            '<td><textarea  onblur="totl2()" class="" id="" name="count'+totalCount+'" style="text-align: center;display: inline-block">' +
+                                                            count + '</textarea></td>')
+                                                        .append('<td>' + price + '</td> <input type="hidden" name="price'+totalCount+'" id="inputprice" value="'+price+'">')
+                                                        .append(
+                                                            "<td><a class='remove'  target='_self' title='移除' onclick='remove(this)'>移除</a></td>"
+                                                        )
+                                                        .appendTo("#paper");
+                                                    if (hasRepeat("paper", "1") == 1) {
+                                                        alert("已选");
+                                                        $("#paper").html(html);
+                                                    } else {
+                                                        alert("无重复");
+                                                        totl(price);
+
+                                                        $("#totalCount").val(totalCount);
+                                                    }
+
+                                                }
+                                            </script>
+                                            <div class="rig"><i class="price" id="price">1199</i><a target="_self" class="sGray choice" id="xuanyong" onclick="xuanyong(this)" name="0">选用</a></div>
+
+                                    </li>
+
+                                    <li pid="2" pur2="" picur2="" class="pic-txt clearfix">
+                                        <a target="_blank" href="" class="img" rel="" data-rel=""></a>
+                                        <dl class="mid">
+                                            <dt><a target="_blank" href="" class="title">Intel酷睿i7 9400F</a></dt>
+                                            <dd class="h46">
+                                                <i id="hexin"><em>核心类型:</em>Ice Lake(第10代) </i>
+                                                <i id="type"><em>接口类型:</em>LGA 1000 </i>
+                                                <i><em> 二级缓存:</em>1.5M</i>
+                                                <i><em>三级缓存:</em>9M </i>
+                                                <i><em> 工作功率:</em>8 </i>
+                                            </dd>
+                                            <dd><a target="_blank" href="" class="mcs">更多参数&gt;&gt;</a>
+                                            </dd>
+                                            <div class="rig"><i class="price" id="price">1200</i><a target="_self" class="choice" id="xuanyong" onclick="xuanyong(this)" name="1">选用</a>
+                                            </div>
+                                        </dl>
+                                    </li>
+
+                                    <li class="last">
+                                        <div class="pages pconline_page">
+                                            <input type="text" value="1" style="width: 30px" id="page">
+                                            <button title="提交" value="提交" onclick="tijiaoPage()">提交</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                        <!-- ******************************************************************************************************************************************************************* -->
+                    </div>
+
+                    <!-- 通栏2 -->
+
+                </div>
+                <!-- /wraper -->
+            </div>
+            <div class="pick" id="pick" style="display: none; left: 793px; top: 589px;"></div>
+            <div id="sbk" style="display: none;">
+                <i class="ttriangle"></i>
+                <a href="javascript:void(0)">1</a>
+                <a href="javascript:void(0)">2</a>
+                <a href="javascript:void(0)">3</a>
+                <a href="javascript:void(0)">4</a>
+                <a href="javascript:void(0)">5</a>
+                <a href="javascript:void(0)">6</a>
+                <a href="javascript:void(0)">7</a>
+                <a href="javascript:void(0)">8</a>
+                <a href="javascript:void(0)">9</a>
+            </div>
+
+
+
+            <script>
+                function hasRepeat(objId, columnIndex) {
+                    var arr = [];
+                    $("#" + objId + " tbody tr").each(function() {
+                        arr.push($("td:eq(" + columnIndex + ")", this).text());
+                    });
+                    arr.sort();
+                    if (arr.length == $.unique(arr).length) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            </script>
+
+
+
+
+    </body>
+
+</html>

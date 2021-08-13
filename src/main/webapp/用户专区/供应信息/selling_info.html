@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户专区</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Trade.css">
+</head>
+
+<body>
+    <div class="box790">
+
+        <div class="tit_t">
+            <strong>销售中的信息</strong>
+            <div class="tab_ul">
+                <ul>
+                    <li class="tab_li"><a href="">产品供应</a></li>
+                    <li><a href="">代理加盟</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tipBox2">
+            <div class="iconArrDownBox">
+                <p><strong>销售提醒</strong>:销售中的信息<span class="fontf60">(统计中...)</span> 即将在15天后过期的信息<span class="fontf60">(统计中...)</span>
+                    <a href="javascript:;" class="font369">仅显示已经到期的信息</a>
+                </p>
+                <p><strong>重发提醒</strong>: 今日已重发信息<span class="fontf60">(统计中...)</span> 已用自动重发<span class="fontf60">(统计中...)</span> 可用自动重发
+                    <span class="fontf60">(0)</span> <a href="javascript:;" target="_blank" class="font369">增加可用自动重发条数</a> </p>
+            </div>
+            <div class="iconArrDown bg"></div>
+        </div>
+        <div class="btn_goal">
+            <div class="fl">
+                <a href="javascript:;" class="btn_fx">营销分析</a></div>
+            <div class="fr">
+                <input name="key" type="text" value="信息标题" class="setxt hw26 bg">
+                <span class="btn_sem bg">
+                    <a><input type="button" class="btn_siup bg" onclick="search()" value="搜索"></a>
+                </span>
+            </div>
+        </div>
+        <div id="pos">
+            <div class="filter">
+                <input name="" type="checkbox" value="" bindto="idCheck"> 全选 将选中信息 <a href="#" ot="1" class="btn_fx">重发</a>
+
+                <a ot="1" href="#" class="btn_fx nobl">下架</a><a ot="1" href="#" class="btn_fx"><strong>全部删除</strong></a>
+            </div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+                <tbody>
+                    <tr class="ht hd">
+                        <td width="57" text-align="center">
+                            &nbsp;
+                        </td>
+                        <td width="233" text-align="left">
+                            标题
+                        </td>
+                        <td width="77" text-align="left">
+                            供应数量
+                        </td>
+                        <td width="129" text-align="left">
+                            信息重发
+                        </td>
+                        <td width="108" text-align="left">
+                            到期时间
+                        </td>
+                        <td width="83" text-align="left">
+                            操作
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--表格部分-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+
+            <tbody>
+                <tr class="hd">
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072546">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072546.html" target="_blank" class="font369">供应水牛取力发电机</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-22
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-22">
+                            2021-02-22</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072545">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072545.html" target="_blank" class="font369">供应真石漆</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-22
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-22">
+                            2021-02-22</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr class="hd">
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072542">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072542.html" target="_blank" class="font369">供应ALC楼板</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-21
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-21">
+                            2021-02-21</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072541">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072541.html" target="_blank" class="font369">供应迪斯科二手切割机划片机</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-21
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-21">
+                            2021-02-21</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr class="hd">
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072540">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072540.html" target="_blank" class="font369">供应旋流沉砂池生产线</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-21
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-21">
+                            2021-02-21</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072534">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072534.html" target="_blank" class="font369">供应腻子粉</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-19
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-19">
+                            2021-02-19</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr class="hd">
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072529">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072529.html" target="_blank" class="font369">供应防火板氧化镁板</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-18
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-18">
+                            2021-02-18</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072528">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072528.html" target="_blank" class="font369">供应防火板</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-18
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-18">
+                            2021-02-18</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr class="hd">
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072527">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072527.html" target="_blank" class="font369">供应消除静电除尘离子风幕机</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-18
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-18">
+                            2021-02-18</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="45" text-align="left" valign="middle">
+                        <input name="idCheck" type="checkbox" value="4072526">
+                    </td>
+                    <td text-align="left" valign="middle" style="width:340px;">
+                        <a href="http://www.bmlink.com/buy/4072526.html" target="_blank" class="font369">供应美登思 MDS 3
+                            ATS开关</a>
+                    </td>
+                    <td height="45" text-align="left" valign="middle">
+                        <span class="fontf60">
+                            0</span>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        2021-01-18
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="#" onclick="javascript:return false;" class="time" title="发布时间：2021-01-18">
+                            2021-02-18</a>
+                    </td>
+                    <td text-align="left" valign="middle">
+                        <a href="javascript:;" class="font369">修改</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="filter">
+            <input name="" type="checkbox" value="" bindto="idCheck"> 全选 将选中信息 <a href="#" ot="1" class="btn_fx">重发</a><a href="#" ot="1" class="btn_fx noborl">自动重发</a>
+            <a href="#" ot="1" class="btn_fx noborl">取消自动重发</a><a ot="1" href="#" class="btn_fx nobl">下架</a><a ot="1" href="#" class="btn_fx"><strong>全部删除</strong></a></div>
+        <div class="page">
+            <span class="paginationInfo">1/20972 记录数:209719</span> &nbsp;<span><a
+                    href="javascript:void(0);">首页</a></span> <span><a href="javascript:void(0);">上一页</a></span> <span class="currentPage">1</span> <span><a href="buying.aspx?page=2">2</a></span> <span><a
+                    href="buying.aspx?page=3">3</a></span> <span><a href="buying.aspx?page=4">4</a></span> <span><a
+                    href="buying.aspx?page=5">5</a></span> <span><a href="buying.aspx?page=6">...</a></span> <span><a
+                    href="buying.aspx?page=2">下一页</a></span> <span></span>
+        </div>
+
+        <div class="tradeHelp">
+
+            <div class="title">
+                <strong class="fz12 c_lv">信息管理技巧</strong></div>
+            <ul class="mass_li newMass">
+
+                <li class="hd">
+
+                    <a href="javascript:;" target="_blank" class="font369">
+                        如何发布高质量的供应信息？</a>
+
+                    <a href="javascript:;" target="_blank" class="font369">
+                        标题要怎么填能提高点击率？</a>
+
+                </li>
+
+                <li>
+
+                    <a href="javascript:;" target="_blank" class="font369">
+                        如何发布采购信息？</a>
+
+                    <a href="javascript:;" target="_blank" class="font369">
+                        如果管理采购中的信息？</a>
+
+                </li>
+
+                <li class="hd">
+
+                    <a href="javascript:;" target="_blank" class="font369">
+                        如何管理未上架的采购信息？</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

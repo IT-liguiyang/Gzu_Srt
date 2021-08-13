@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+
+
+    <script type="text/javascript">
+        // 1. 绑定点击事件
+
+        $(function () {
+
+
+        $("#loginBtn").click(function () {
+            var uname = $("#username").val();
+            var upwd = $("#password").val();
+            var spanobj= document.getElementById("span");
+
+            if (isEmpty(uname)&&isEmpty(upwd)){
+                spanobj.innerHTML="信息不能为空！";
+                return;
+            };
+            if (isEmpty(uname)) {
+                 spanobj.innerHTML="用户名不能为空！";
+                return;
+            };
+            if (isEmpty(upwd)) {
+                spanobj.innerHTML="密码不能为空！";
+                return;
+            };
+
+            $.post("User/login", $("#loginForm").serialize(), function (data) {
+                if (data.flag) {
+                    location.href = "FileTest.jsp";
+                } else {
+                  $("#errorMsg").html(data.errorMsg);
+                }
+
+            });
+        });
+
+        //2.
+        function isEmpty(str) {//判断字符串是否为空
+            if (str == null || str.trim() == "")
+                return true;
+            else
+                return false;
+        };
+        });
+    </script>
+
+
+
+
+</head>
+
+<body>
+<div id="login" class="login">
+    <form name="loginForm" id="loginForm">
+        <div id="title" class="login-title">登录界面
+            <span><a id="closeBtn" href="F:\JS网页编程\案例\信息对称系统\首页\index.html" class="close-login">关闭</a></span>
+        </div>
+        <div class="login-input-content">
+            <div class="login-input">
+                <label class="label_input1">用户名：</label>
+                <input type="text" placeholder="请输入用户名" name="username" id="username" class="list-input">
+            </div>
+            <div class="login-input">
+                <label class="label_input2">密      码：</label>
+                <input type="password" placeholder="请输入登录密码" name="password" id="password" class="list-input">
+            </div>
+        </div>
+
+       <span id="span" ></span>
+        <br>
+        <button type="button" id="loginBtn">登录</button>
+<!--        <input type="submit" id="loginBtn" value="登录" >-->
+        <!--      <a href="F:\JS网页编程\案例\信息对称系统\首页\index.html"><input type=button id="loginBtn" value="登录"> </a> -->
+        <input type="reset" id="resetBtn" value="重置">
+    </form>
+</div>
+</body>
+
+</html>

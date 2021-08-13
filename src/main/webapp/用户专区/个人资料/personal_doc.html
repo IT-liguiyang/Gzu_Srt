@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户专区</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Trade.css">
+    <link href="../../个人中心/订单管理/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../个人中心/订单管理/css/form.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <form id="form1" action="" method="post">
+        <input type="hidden" name="act" value="contactnew">
+        <div class="box790">
+            <div class="tit_t">
+                <strong>个人资料</strong>
+            </div>
+            <div class="blank10">
+            </div>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>姓名：</dt>
+                <dd>
+                    <input id="FirstName" name="FirstName" type="text" class="txtInt  bg"><span id="FirstNameTip" class=""></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>性别：</dt>
+                <dd>
+                    <input type="radio" name="Sex" value="1" checked="checked">先生
+                    <input type="radio" name="Sex" value="0">女士
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>手机号码：</dt>
+                <dd>
+                    <input name="telephone" type="text" class="txtInt  bg" value=""></dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>商铺显示手机</dt>
+                <dd>
+                    <input type="checkbox" name="IsShowMobile" value="1">
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>固定电话：</dt>
+                <dd>
+                    <input name="Phonecountry" id="Phonecountry" type="text" class="txtInt w50 bg" value=""><input name="Phonearea" id="Phonearea" type="text" class="txtInt w50 bg" value=""><input name="Phonenumber" id="Phonenumber" type="text" class="txtInt  bg"
+                        value=""></dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>传真：</dt>
+                <dd>
+                    <input name="Faxcountry" id="Faxcountry" type="text" class="txtInt w50 bg" value=""><input name="Faxarea" id="Faxarea" type="text" class="txtInt w50 bg" value=""><input name="Faxnumber" id="Faxnumber" type="text" value="" class="txtInt  bg"></dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>电子邮箱：</dt>
+                <dd>
+
+                    <input name="Email" id="Email" type="text" class="txtInt  bg"><span id="EmailTip" class=""></span><br>
+                    <a href="" target="_blank" class="font369"><span class="font369">进行邮箱验证</span></a> ,验证成功后可以使用该邮箱登录
+
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>QQ:</dt>
+                <dd>
+                    <input name="QQ" id="QQ" value="" type="text" class="txtInt  bg"><span title="由于天翼QQ不支持直接用QQ号码用户在线临时对话，出于安全考虑，暂不提供该支持">(暂不支持天翼QQ)</span>
+                    <a target="_blank" title="是否您的QQ号码在商铺等页面无法显示？" href="http://club.bmlink.com/showtopic-28982.aspx">
+                        <span>填写了QQ前台无法正常显示？</span></a>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>&nbsp;</dt>
+                <dd><a class="font369 btnshowqq" href="javascript:;">点此检测我的QQ在前台的是否正常显示</a></dd>
+                <dd><span class="green jianceshow"></span><span class="qqresult"></span></dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>所在部门:</dt>
+                <dd>
+                    <input name="Department" type="text" class="txtInt  bg" value=""></dd>
+            </dl>
+            <dl class="list_dd">
+                <dt><span class="red">*</span>职位:</dt>
+                <dd>
+                    <select id="PositionType" name="PositionType" class="text" style="width: 100px">
+                        <option>请选择</option>
+                        
+                        <option value="1">
+                            法人代表</option>
+                        
+                        <option value="2">
+                            部门负责人</option>
+                        
+                        <option value="3">
+                            经理</option>
+                        
+                        <option value="4">
+                            销售人员</option>
+                        
+                        <option value="5">
+                            行政人员</option>
+                        
+                        <option value="20" selected="selected">
+                            其他</option>
+                        
+                    </select>
+                    <input type="text" class="txtInt  bg" value="" id="Position" name="Position">
+                    <span id="PositionTypeTip" class=""></span>
+                </dd>
+            </dl>
+            <!-- <dl class="list_dd" id="MainContent_AccountMainContent_areacontact">
+                <dt><span class="red">*</span>联系地址：</dt>
+                <dd>
+                    <select name="areacontact">
+                        <option value="0">中国</option>
+                        <option value="1">其他国家/地区</option>
+                    </select>
+                    <select name="areacontact">
+                        <option value="0">-选择省份-</option>
+                    <option value="1">北京</option><option value="10">上海</option><option value="20">天津</option><option value="26">重庆</option><option value="58">河北</option><option value="203">山西</option><option value="309">河南</option><option value="438">辽宁</option><option value="498">吉林</option><option value="546">黑龙江</option><option value="626">内蒙古</option><option value="714">江苏</option><option value="789">山东</option><option value="899">安徽</option><option value="977">浙江</option><option value="1056">福建</option><option value="1124">湖北</option><option value="1206">湖南</option><option value="1307">广东</option><option value="1405">广西</option><option value="1493">江西</option><option value="1585">四川</option><option value="1715">海南</option><option value="1735">贵州</option><option value="1816">云南</option><option value="1942">西藏</option><option value="1966">陕西</option><option value="2063">甘肃</option><option value="2145">青海</option><option value="2187">宁夏</option><option value="2207">新疆</option><option value="2292">台湾</option><option value="8547">香港</option><option value="8551">澳门</option></select>
+
+                    <select name="areacontact">
+                        <option value="0">-选择市-</option>
+                    </select>
+
+                    <select name="areacontact">
+                        <option value="0">-选择县/区-</option>
+                    </select>
+
+                </dd>
+            </dl> -->
+            <dl class="list_dd" id="MainContent_AccountMainContent_areacontact">
+                <dt><span class="red">*</span>联系地址：</dt>
+                <dd>
+                    <select name="areacontact">
+        <option value="0">中国</option>
+        <option value="1">其他国家/地区</option>
+    </select>
+                    <select name="areacontact">
+        <option value="0">-选择省份-</option>
+    <option value="1">北京</option><option value="10">上海</option><option value="20">天津</option><option value="26">重庆</option><option value="58">河北</option><option value="203">山西</option><option value="309">河南</option><option value="438">辽宁</option><option value="498">吉林</option><option value="546">黑龙江</option><option value="626">内蒙古</option><option value="714">江苏</option><option value="789">山东</option><option value="899">安徽</option><option value="977">浙江</option><option value="1056">福建</option><option value="1124">湖北</option><option value="1206">湖南</option><option value="1307">广东</option><option value="1405">广西</option><option value="1493">江西</option><option value="1585">四川</option><option value="1715">海南</option><option value="1735">贵州</option><option value="1816">云南</option><option value="1942">西藏</option><option value="1966">陕西</option><option value="2063">甘肃</option><option value="2145">青海</option><option value="2187">宁夏</option><option value="2207">新疆</option><option value="2292">台湾</option><option value="8547">香港</option><option value="8551">澳门</option></select>
+
+                    <select name="areacontact">
+        <option value="0">-选择市-</option>
+    <option value="1740">遵义</option><option value="1753">安顺</option><option value="1756">铜仁</option><option value="1757">毕节</option><option value="1758">六盘水</option><option value="1805">黔西南布依族苗族自治州</option><option value="7245">黔东南苗族侗族自治州</option><option value="7262">贵阳</option><option value="7335">黔南布依族苗族自治州</option></select>
+
+                    <select name="areacontact">
+        <option value="0">-选择县/区-</option>
+    <option value="1736">清镇市</option><option value="1737">修文县</option><option value="1738">息烽县</option><option value="1739">开阳县</option><option value="7264">南明区</option><option value="7265">白云区</option><option value="7266">花溪区</option><option value="7267">乌当区</option><option value="7268">小河区</option><option value="7269">云岩区</option><option value="7270">贵阳市</option></select>
+
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>&nbsp;</dt>
+                <dd><input name="areacontactOther" type="text" value="" style="width:350px" class="txtInt  bg"></dd>
+            </dl>
+            <script src="../js/areajson.js" type="text/javascript"></script>
+            <script language="javascript">
+                $(function() {
+                    var cid = 'MainContent_AccountMainContent_areacontact';
+
+                    function getarea(pid, index, callback) {
+                        if (index == 0) {
+                            getarea(0, 1);
+                        } else {
+                            var select = $('#' + cid + ' select:eq(' + index + ')');
+                            $('#' + cid + ' select:gt(' + index + ')').each(function() {
+                                $(this).find('option:gt(0)').remove();
+                            });
+                            var json = findjson(pid, index);
+                            $.each(json, function(i, area) {
+
+                                select.append('<option value="' + area.Id + '">' + area.Name + '</option>');
+                            });
+                            if (callback) {
+                                callback();
+                            }
+                        }
+                    }
+
+                    function findjson(pid, index) {
+                        if (index == 1) //1rank
+                        {
+                            var select = "";
+                            $.each(areastring, function(i, area) {
+                                select += "{'Id':" + area.Id + ",'Name':'" + area.Name + "'},";
+                            });
+                            return eval("[" + RTrim(select) + "]");
+                        } else if (index == 2) //2rank
+                        {
+                            var select = "";
+                            $.each(areastring, function(i, area) {
+                                if (pid == area.Id) {
+                                    select = "";
+                                    $.each(area.List, function(i2, area2) {
+                                        select += "{'Id':" + area2.Id + ",'Name':'" + area2.Name + "'},";
+
+                                    });
+                                }
+                            });
+                            return eval("[" + RTrim(select) + "]");
+                        } else if (index == 3) //3rank
+                        {
+                            var select = "";
+                            $.each(areastring, function(i, area) {
+                                $.each(area.List, function(i2, area2) {
+
+                                    if (pid == area2.Id) {
+                                        select = "";
+                                        $.each(area2.List, function(i3, area3) {
+                                            select += "{'Id':" + area3.Id + ",'Name':'" + area3.Name + "'},";
+
+                                        });
+                                    }
+
+                                });
+                            });
+                            return eval("[" + RTrim(select) + "]");
+                        }
+                    }
+
+                    function RTrim(str) {
+                        var i;
+                        for (i = str.length - 1; i >= 0; i--) {
+                            if (str.charAt(i) != "," && str.charAt(i) != ",") break;
+                        }
+                        str = str.substring(0, i + 1);
+                        return str;
+                    }
+                    var CountryId = '0';
+                    var ProvinceId = '1735';
+                    var CityId = '7262';
+                    var CountyId = '7269';
+                    setTimeout(function() {
+                        try {
+                            $('#' + cid + ' select:eq(0)').val(CountryId);
+                        } catch (ex) {}
+
+                        if (CountryId == 0) {
+                            $('#' + cid + ' select:eq(1)').show();
+                            $('#' + cid + ' select:eq(2)').show();
+                            $('#' + cid + ' select:eq(3)').show();
+                            getarea(0, 1, function() {
+                                if (ProvinceId > 0) {
+                                    try {
+                                        $('#' + cid + ' select:eq(1)').val(ProvinceId);
+                                    } catch (ex) {}
+
+                                    getarea(ProvinceId, 2, function() {
+                                        if (CityId > 0) {
+                                            try {
+                                                $('#' + cid + ' select:eq(2)').val(CityId);
+                                            } catch (ex) {}
+
+                                            getarea(CityId, 3, function() {
+                                                if (CountyId > 0) {
+                                                    try {
+                                                        $('#' + cid + ' select:eq(3)').val(CountyId);
+                                                    } catch (ex) {}
+                                                }
+                                            });
+
+                                        }
+                                    });
+
+                                }
+                            });
+                        } else {
+                            $('#' + cid + ' select:eq(1)').hide();
+                            $('#' + cid + ' select:eq(2)').hide();
+                            $('#' + cid + ' select:eq(3)').hide();
+                        }
+
+                    }, 10);
+
+                    $('#' + cid + ' select:eq(0)').change(function() {
+                        var CountryId = $(this).val();
+                        var $select1 = $('#' + cid + ' select:eq(1)');
+                        var $select2 = $('#' + cid + ' select:eq(2)');
+                        var $select3 = $('#' + cid + ' select:eq(3)');
+                        $select1.find('option:gt(0)').remove();
+                        $select2.find('option:gt(0)').remove();
+                        $select3.find('option:gt(0)').remove();
+                        if (CountryId == 0) {
+                            $select1.show();
+                            $select2.show();
+                            $select3.show();
+                            getarea($(this).val(), 1);
+                        } else {
+                            $select1.hide();
+                            $select2.hide();
+                            $select3.hide();
+                        }
+                    });
+
+                    $('#' + cid + ' select:eq(1)').change(function() {
+                        $('#' + cid + ' select:eq(2)').find('option:gt(0)').remove();
+                        $('#' + cid + ' select:eq(3)').find('option:gt(0)').remove();
+                        getarea($(this).val(), 2);
+                    });
+
+                    $('#' + cid + ' select:eq(2)').change(function() {
+                        $('#' + cid + ' select:eq(3)').find('option:gt(0)').remove();
+                        getarea($(this).val(), 3);
+                    });
+
+                });
+            </script>
+
+            <dl class="list_dd">
+                <dt>邮政编码：</dt>
+                <dd>
+                    <input name="postcode" id="postcode" type="text" value="" class="txtInt  bg">
+                    <span id="postcodeTip" class=""></span>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>个人微信：</dt>
+                <dd>
+                    <div>
+                        <img id="showpictureimgupload3" src="https://meta.bmlink.com/2011/member/images/pic/pic_200x150.jpg" width="91" height="91" alt="">
+                    </div>
+                    <div class="pa10">
+                        <!--<a class="btn_fx" href="javascript:">上传</a>
+                        <font color="#999999">&nbsp;微信二维码最佳宽高：120*120 图片格式为jpg、jpeg、gif、png</font>-->
+
+
+
+                        <input type="hidden" value="" name="imgupload3" id="imgupload3">
+                        <span style="display: block; float: left;">
+<a name="imgupload3_file" id="imgupload3_file" class="btn_fx" href="javascript:;">上传</a>
+</span>
+                        <input type="hidden" id="imgupload3_categoryid" value="1">
+                        <script type="text/javascript" language="javascript">
+                            $(function() {
+                                $('#imgupload3_file').click(function() {
+                                    selectPicture({
+                                        maxlength: 1,
+                                        watermark: true,
+                                        defaultcate: true,
+                                        callback: function(data) {
+                                            if (data.length < 1) {
+                                                alert("您尚未选择任何图片！");
+                                                return false;
+                                            }
+                                            var smallpath = 'http://img1.bmlink.com/small/';
+                                            //$('#showpictureimgupload3').attr('src', smallpath + data[i].path);
+                                            $('#showpictureimgupload3').attr('src', data[0].path);
+                                            $('#showpictureimgupload3').attr("alt", "0");
+                                            //$('#showpictureimgupload3').attr("orisrc", data[i].path);
+                                            $('#showpictureimgupload3').attr("orisrc", data[0].serverpath);
+                                            $('#imgupload3').val(data[0].serverpath);
+                                        }
+                                    });
+                                });
+                            });
+                            //js字符串转
+                            function parseObj(strData) {
+                                return (new Function("return" + strData))();
+                            }
+                        </script>
+
+
+                        <font color="#999999">&nbsp;微信二维码最佳宽高：91*91 图片格式为jpg、jpeg、gif、png</font>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="list_dd">
+                <dt>&nbsp;</dt>
+                <dd>
+                    <a href="#" class="btn_ok bg">
+                        <input type="submit" value="保存" class="btn_ok bg"></a>
+                </dd>
+            </dl>
+        </div>
+    </form>
+</body>
+
+</html>

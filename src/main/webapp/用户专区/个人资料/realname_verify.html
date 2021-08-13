@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户专区</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Trade.css">
+</head>
+
+<body>
+    <form id="form1" method="post">
+        <div class="box790">
+            <div class="tit_t">
+                <strong>企业认证</strong>
+
+                <p class="icon_no_rz">未认证</p>
+
+            </div>
+            <div class="rz_tip">企业认证需要<a href="javascript:">上传营业执照图片</a>（必填）<a href="realnamestr.aspx">完善营业执照注册信息</a>（选填）</div>
+            <div class="tab_rz">
+                <a href="javascript:" class="active">上传营业执照</a><a href="realnamestr.aspx">完善营业执照注册信息</a>
+            </div>
+
+            <ul class="rz_up">
+                <li>
+                    <div class="rz_img">
+                        <p>营业执照<span>(未上传)</span></p>
+                        <div class="icon_add">
+                            <a href="https://meta.bmlink.com/2011/member/images/pic/pic_200x150.jpg" target="_blank">
+                                <img id="RegNumberPic" width="150" height="150" src="https://meta.bmlink.com/2011/member/images/pic/pic_200x150.jpg"></a>
+                        </div>
+                    </div>
+                    <div class="tipMes">
+                        <h3>此项必填<i class="red">*</i></h3>
+                        <p>1. 图片须为营业执照或三证合一的彩色数码相机拍摄件或扫描件，涂改后无效。</p>
+                        <p>2. 图片必须清晰、完整、方向正确，并且不能带有其他网站的logo或无关的标记信息。</p>
+                        <p>3. 图片支持jpg、jpeg、png格式，大小不超过2M。</p>
+                        <p>4. 证件必须为有效期之内的新版营业执照（或包含2012年度年检信息的营业执照）</p>
+                        <p>5. 如果审核失败2次，则商务室无法修改请联系客服</p>
+                        <p>6. 已认证后需修改企业名称与营业执照请联系客服</p>
+
+                        <form id="form1" method="post" action="?">
+                            <button type="submit" class="btn_save">保 存</button>
+                            <input type="hidden" name="ImagePath">
+                        </form>
+                        <form id="form2" method="post" action="/ashx/NewUpLoadRealNamePicHandler.ashx" target="iframe1" enctype="multipart/form-data" autocomplete="off">
+                            <iframe id="iframe1" name="iframe1" style="display: none"></iframe>
+                            <div class="uploadpic">
+                                <i>上传图片</i>
+                                <input type="file" name="ImageData">
+                            </div>
+                        </form>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+</body>
+
+</html>
